@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FirstpageComponent implements OnInit {
 
+  public message: string = "Passing the data"; //Can give it any type obj, etc.
+
   constructor() { }
 
   ngOnInit(): void {
