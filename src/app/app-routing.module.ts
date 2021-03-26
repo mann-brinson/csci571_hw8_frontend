@@ -3,10 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FirstpageComponent} from './components/firstpage/firstpage.component';
 import { SecondpageComponent} from './components/secondpage/secondpage.component'
+import { FirstChildComponent } from './components/first-child/first-child.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
-  {path: 'first', component: FirstpageComponent},
+  {
+    path: 'details', 
+    // component: FirstpageComponent,
+    children: [
+      {path: '', component: FirstpageComponent},
+      {path: ':category', component: FirstChildComponent},
+    
+    ]
+  },
   {path: 'second', component: SecondpageComponent}
 
 ];
