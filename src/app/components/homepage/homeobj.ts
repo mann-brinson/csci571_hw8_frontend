@@ -1,5 +1,5 @@
 export interface HomeObj {
-    head: object,
+    head: {now_playing: any},
     movie: object,
     tv: object
 }
