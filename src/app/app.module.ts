@@ -10,6 +10,7 @@ import { SecondpageComponent } from './components/secondpage/secondpage.componen
 import { CommonpageComponent } from './components/commonpage/commonpage.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FirstChildComponent } from './components/first-child/first-child.component';
+import { HomepageService } from './components/homepage/homepage.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { FirstChildComponent } from './components/first-child/first-child.compon
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [HomepageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
