@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MoviepageService } from './moviepage.service';
+
 
 @Component({
   selector: 'app-moviepage',
@@ -9,9 +11,16 @@ export class MoviepageComponent implements OnInit {
 
   public message: string = "Passing the data"; //Can give it any type obj, etc.
 
-  constructor() { }
+  holder = {};
+  constructor(private moviepageService: MoviepageService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    this.moviepageService.getMoviepage()
+      .subscribe((data) => {
+        console.log(data);
+        this.holder = data;
+      })  
   }
 
 }

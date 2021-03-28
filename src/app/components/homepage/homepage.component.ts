@@ -11,7 +11,6 @@ import { HomepageService } from './homepage.service';
 export class HomepageComponent implements OnInit {
 
   holder = {};
-
   constructor(private homepageService: HomepageService) { }
 
   ngOnInit() {
