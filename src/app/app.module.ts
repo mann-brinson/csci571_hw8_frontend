@@ -11,6 +11,7 @@ import { CommonpageComponent } from './components/commonpage/commonpage.componen
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FirstChildComponent } from './components/first-child/first-child.component';
 import { HomepageService } from './components/homepage/homepage.service';
+import { MylistComponent } from './components/mylist/mylist.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomepageService } from './components/homepage/homepage.service';
     SecondpageComponent,
     CommonpageComponent,
     NavBarComponent,
-    FirstChildComponent
+    FirstChildComponent,
+    MylistComponent
   ],
   imports: [
     BrowserModule,
