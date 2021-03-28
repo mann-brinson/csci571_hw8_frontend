@@ -21,9 +21,7 @@ import { TvpageComponent } from './components/tvpage/tvpage.component';
 
 import { MylistComponent } from './components/mylist/mylist.component';
 
-
-
-import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.module';
+// import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +32,7 @@ import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.mod
     FirstChildComponent,
     MylistComponent,
     MoviepageComponent,
-    TvpageComponent
+    TvpageComponent,
   ],
   imports: [
     BrowserModule,

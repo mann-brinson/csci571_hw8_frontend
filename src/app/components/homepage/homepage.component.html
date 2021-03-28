@@ -6,9 +6,23 @@
 </div>
 
 <h2>Currently Playing</h2>
-<div>{{movies_now_playing | json}}</div>
+<!-- <div>{{movies_now_playing | json}}</div> -->
 
-<h2>Carousel Test</h2>
-<!-- <ngbd-carousel></ngbd-carousel> -->
+<h2>Carousel Test 1</h2>
+<tr *ngFor="let movie of movies">
+    <td>{{ movie.id }} {{ movie.name }}</td>
+</tr>
+
+<h2>Carousel Test 2</h2>
+<!-- <ngb-carousel *ngFor="let movie of movies">
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="{{movie.profile_path}}">
+          </div>
+          <div class="carousel-caption">
+            <h3>{{ movie.name }}</h3>
+          </div>
+    </ng-template>
+</ngb-carousel>  -->
 
 <div>{{holder | json}}</div>
