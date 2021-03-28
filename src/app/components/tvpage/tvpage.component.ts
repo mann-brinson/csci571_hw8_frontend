@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TvpageService } from './tvpage.service';
 
 @Component({
   selector: 'app-tvpage',
@@ -9,9 +10,16 @@ export class TvpageComponent implements OnInit {
 
   public message: string = "Passing the data"; //Can give it any type obj, etc.
 
-  constructor() { }
+  holder = {};
+  constructor(private tvpageService: TvpageService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    this.tvpageService.getTvpage()
+      .subscribe((data) => {
+        console.log(data);
+        this.holder = data;
+      })  
   }
 
 }

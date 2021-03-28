@@ -6,16 +6,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HomepageComponent } from './components/homepage/homepage.component';
 import { CommonpageComponent } from './components/commonpage/commonpage.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FirstChildComponent } from './components/first-child/first-child.component';
 
 import { HomepageService } from './components/homepage/homepage.service';
-import { MylistComponent } from './components/mylist/mylist.component';
-import { MoviepageComponent } from './components/moviepage/moviepage.component';
-import { TvpageComponent } from './components/tvpage/tvpage.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+
 import { MoviepageService } from './components/moviepage/moviepage.service';
+import { MoviepageComponent } from './components/moviepage/moviepage.component';
+
+import { TvpageService } from './components/tvpage/tvpage.service';
+import { TvpageComponent } from './components/tvpage/tvpage.component';
+
+import { MylistComponent } from './components/mylist/mylist.component';
+
+
 
 import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.module';
 
@@ -36,7 +42,7 @@ import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.mod
     AppRoutingModule,
     NgbModule
   ],
-  providers: [HomepageService, MoviepageService],
+  providers: [HomepageService, MoviepageService, TvpageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
