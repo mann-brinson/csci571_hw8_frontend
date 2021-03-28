@@ -1,3 +1,28 @@
+<head>
+<style>
+:host ::ng-deep img {
+    /* width: 750px; */
+    resize: both;
+    max-width: 1000px;
+}
+
+ngb-carousel .picsum-img-wrapper {
+  position: relative;
+  height: 0;
+  padding-top: 55%; /* Keep ratio for 900x500 images */
+}
+
+ngb-carousel .picsum-img-wrapper>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* width: 750px; */
+}
+</style>
+</head>
+
 <h1>Home Header</h1>
 
 <div>
@@ -10,19 +35,30 @@
 
 <h2>Carousel Test 1</h2>
 <tr *ngFor="let movie of movies">
-    <td>{{ movie.id }} {{ movie.name }}</td>
+    <td>{{ movie.id }} {{ movie.name }} {{ movie.backdrop_path }}</td>
 </tr>
 
 <h2>Carousel Test 2</h2>
 <!-- <ngb-carousel *ngFor="let movie of movies">
-    <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
-            <img [src]="{{movie.profile_path}}">
-          </div>
-          <div class="carousel-caption">
-            <h3>{{ movie.name }}</h3>
-          </div>
-    </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img [src]="movie.backdrop_path">
+            </div>
+            <div class="carousel-caption">
+                <h3>{{ movie.name }}</h3>
+            </div>
+        </ng-template>
 </ngb-carousel>  -->
+
+<ngb-carousel>
+    <ng-template ngbSlide *ngFor="let movie of movies">
+        <div class="picsum-img-wrapper">
+            <img [src]="movie.backdrop_path">
+        </div>
+        <div class="carousel-caption">
+            <h3>{{ movie.name }}</h3>
+        </div>
+    </ng-template>
+</ngb-carousel>
 
 <div>{{holder | json}}</div>

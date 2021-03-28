@@ -22,7 +22,8 @@ export class HomepageComponent implements OnInit {
 
     this.homepageService.getHomepage()
       .subscribe((data) => {
-        console.log(data.head.now_playing[0].id);
+        // console.log(data.head.now_playing[0].id);
+        console.log(data.head.now_playing);
         this.holder = data;
         this.movies = data.head.now_playing;
 
