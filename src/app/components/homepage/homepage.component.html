@@ -30,28 +30,10 @@ ngb-carousel .picsum-img-wrapper>img {
     <a routerLink="/watch/tv/155">TV Link</a><br>
 </div>
 
-<h2>Currently Playing</h2>
-<!-- <div>{{movies_now_playing | json}}</div> -->
-
-<h2>Carousel Test 1</h2>
-<tr *ngFor="let movie of movies">
-    <td>{{ movie.id }} {{ movie.name }} {{ movie.backdrop_path }}</td>
-</tr>
-
-<h2>Carousel Test 2</h2>
-<!-- <ngb-carousel *ngFor="let movie of movies">
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper">
-                <img [src]="movie.backdrop_path">
-            </div>
-            <div class="carousel-caption">
-                <h3>{{ movie.name }}</h3>
-            </div>
-        </ng-template>
-</ngb-carousel>  -->
-
+<h2>Currently Playing - Works</h2>
 <ngb-carousel>
     <ng-template ngbSlide *ngFor="let movie of movies">
+        
         <div class="picsum-img-wrapper">
             <img [src]="movie.backdrop_path">
         </div>
@@ -61,4 +43,19 @@ ngb-carousel .picsum-img-wrapper>img {
     </ng-template>
 </ngb-carousel>
 
+<h2>Carousel Linking Test</h2>
+<ngb-carousel>
+    <ng-template ngbSlide *ngFor="let movie of movies">
+        <div *ngIf="movie.id" class="id">{{movie.id}}</div>
+
+        <div class="picsum-img-wrapper" (click)="testFx($event)">
+            <img id={{movie.id}} [src]="movie.backdrop_path">
+        </div>
+        <div class="carousel-caption">
+            <h3>{{ movie.name }}</h3>
+        </div>
+    </ng-template>
+</ngb-carousel>
+
+<h2>All Data</h2>
 <div>{{holder | json}}</div>

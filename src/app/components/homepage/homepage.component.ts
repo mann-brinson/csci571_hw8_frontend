@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { HomepageService } from './homepage.service';
 import { MovieTvItem } from './movieTvItem';
 
@@ -16,10 +17,10 @@ export class HomepageComponent implements OnInit {
   movies: MovieTvItem[] = [];
   // movies: MovieTvItem[];
 
-  constructor(private homepageService: HomepageService) { }
+  constructor(private homepageService: HomepageService,
+    private router: Router) { }
 
   ngOnInit() {
-
     this.homepageService.getHomepage()
       .subscribe((data) => {
         // console.log(data.head.now_playing[0].id);
@@ -27,10 +28,17 @@ export class HomepageComponent implements OnInit {
         this.holder = data;
         this.movies = data.head.now_playing;
 
-
-
         // head_movies = data.head
       })  
+  }
+
+  // ATTEMPT 2
+  testFx(event: Event) {
+    // console.log(event);
+    let movie_id: string = (event.target as Element).id;
+    // var movie_id = srcElem.id
+    console.log(movie_id);
+    this.router.navigate([`/watch/movie/${movie_id}`]);
   }
 
 
