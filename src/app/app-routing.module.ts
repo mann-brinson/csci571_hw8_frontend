@@ -15,7 +15,8 @@ const routes: Routes = [
     path: 'watch',
     children: [
       {path: 'movie/:tmdb_id', component: MoviepageComponent},
-      {path: 'tv/:tmdb_id', component: TvpageComponent}
+      {path: 'tv/:tmdb_id', component: MoviepageComponent}
+      // {path: 'tv/:tmdb_id', component: TvpageComponent}
     ]
   }
 

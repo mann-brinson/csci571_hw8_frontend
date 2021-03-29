@@ -24,14 +24,20 @@ export class MoviepageComponent {
   // ngOnInit() {
   ngOnInit() {
     var movie_id = this.route.snapshot.paramMap.get("tmdb_id");
-    // console.log({"test": movie_id});
+    console.log({"paramMap": this.route.snapshot.paramMap});
+
+    // console.log({"current type": window.location.pathname.split("/")[2]});
 
     // Will trigger whenver the tmdb_id in route changes
     this.route.params.subscribe(routeParams => {
       // console.log({"new tmdb_id": routeParams.tmdb_id})
 
-      this.moviepageService.getMoviepage(routeParams.tmdb_id!)
+      var entity_type = window.location.pathname.split("/")[2]
+
+      this.moviepageService.getMoviepage(routeParams.tmdb_id!, entity_type)
       .subscribe((data) => {
+
+        console.log({"current type": window.location.pathname.split("/")[2]});
 
         this.holder = data;
         this.preview_video = data.video;
