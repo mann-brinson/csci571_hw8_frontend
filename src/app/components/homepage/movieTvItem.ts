@@ -1,5 +1,5 @@
 export interface MovieTvItem {
     id?: number,
     name?: string,
-    backdrop_path?: string
+    poster_path?: string
 }

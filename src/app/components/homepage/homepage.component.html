@@ -32,10 +32,10 @@ ngb-carousel .picsum-img-wrapper>img {
 
 <h2>Currently Playing (Links) Works</h2>
 <ngb-carousel>
-    <ng-template ngbSlide *ngFor="let movie of movies">
+    <ng-template ngbSlide *ngFor="let movie of movies_now_playing">
         <div *ngIf="movie.id" class="id">{{movie.id}}</div>
 
-        <div class="picsum-img-wrapper" (click)="testFx($event)">
+        <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
             <img id={{movie.id}} [src]="movie.backdrop_path">
         </div>
         <div class="carousel-caption">
@@ -43,6 +43,10 @@ ngb-carousel .picsum-img-wrapper>img {
         </div>
     </ng-template>
 </ngb-carousel>
+
+<h2>Multi-item carousel test : Popular Movies</h2>
+<div>{{movies_popular | json}}</div>
+<app-multi-item-carousel></app-multi-item-carousel>
 
 <h2>All Data</h2>
 <div>{{holder | json}}</div>

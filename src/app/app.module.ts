@@ -20,6 +20,7 @@ import { TvpageService } from './components/tvpage/tvpage.service';
 import { TvpageComponent } from './components/tvpage/tvpage.component';
 
 import { MylistComponent } from './components/mylist/mylist.component';
+import { MultiItemCarouselComponent } from './components/multi-item-carousel/multi-item-carousel.component';
 
 // import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.module';
 
@@ -33,6 +34,7 @@ import { MylistComponent } from './components/mylist/mylist.component';
     MylistComponent,
     MoviepageComponent,
     TvpageComponent,
+    MultiItemCarouselComponent,
   ],
   imports: [
     BrowserModule,

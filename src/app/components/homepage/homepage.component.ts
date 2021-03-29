@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomepageService } from './homepage.service';
-import { MovieTvItem } from './movieTvItem';
 
-// import { NgbdCarouselModule } from 'components/bootstrap/carousel/carousel.module';
+import { MovieItem } from './movieItem';
+import { MovieTvItem } from './movieTvItem';
 
 @Component({
   selector: 'app-homepage',
@@ -13,9 +13,8 @@ import { MovieTvItem } from './movieTvItem';
 export class HomepageComponent implements OnInit {
 
   holder = {};
-  // movies = [];
-  movies: MovieTvItem[] = [];
-  // movies: MovieTvItem[];
+  movies_now_playing: MovieItem[] = [];
+  movies_popular: MovieTvItem[] = [];
 
   constructor(private homepageService: HomepageService,
     private router: Router) { }
@@ -24,20 +23,18 @@ export class HomepageComponent implements OnInit {
     this.homepageService.getHomepage()
       .subscribe((data) => {
         // console.log(data.head.now_playing[0].id);
-        // console.log(data.head.now_playing);
+        console.log(data.movie);
+
         this.holder = data;
-        this.movies = data.head.now_playing;
+        this.movies_now_playing = data.head.now_playing;
+        this.movies_popular = data.movie[0].popular;
 
         // head_movies = data.head
       })  
   }
 
-  // ATTEMPT 2
-  testFx(event: Event) {
-    // console.log(event);
+  gotoMoviePage(event: Event) {
     let movie_id: string = (event.target as Element).id;
-    // var movie_id = srcElem.id
-    // console.log(movie_id);
     this.router.navigate([`/watch/movie/${movie_id}`]);
   }
 
