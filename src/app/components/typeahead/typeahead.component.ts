@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of, OperatorFunction} from 'rxjs';
 import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap} from 'rxjs/operators';
 import { SearchResultItem } from './SearchResultItem';
@@ -9,7 +10,9 @@ const SEARCH_URL = 'http://localhost:8080/search/';
 
 @Injectable()
 export class SearchService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+  ) {}
 
   search(term: string) {
     if (term.length < 2) {
@@ -22,7 +25,7 @@ export class SearchService {
         map(response => response)
 
       );
-    console.log({"result": result})
+    // console.log({"search triggered": result})
     return result
   }
 }
@@ -38,37 +41,12 @@ export class TypeaheadComponent {
   searching = false;
   searchFailed = false;
 
+  // clickedItem = {};
 
-  constructor(private _service: SearchService) { }
-
-  inputFormatMovieListValue(value: any)   {
-    if(value.name)
-      return value.name
-    return value;
-  }
-
-  resultFormatMovieListValue(value: any) {            
-    return value.name;
-  } 
-
-  // VERSION 1
-  // search = (text$: 
-  //   Observable<string>) =>
-  //     text$.pipe(
-  //       debounceTime(300),
-  //       distinctUntilChanged(),
-  //       tap(() => this.searching = true),
-  //       switchMap(term =>
-  //         this._service.search(term).pipe(
-            
-  //           tap(() => this.searchFailed = false),
-  //           catchError(() => {
-  //             this.searchFailed = true;
-  //             return of([]);
-  //           }))
-  //       ),
-  //       tap(() => this.searching = false)
-  //     )
+  constructor(
+    private _service: SearchService,
+    private router: Router
+  ) { }
 
   // VERSION 2
   search = (text$: 
@@ -80,15 +58,35 @@ export class TypeaheadComponent {
           switchMap(term =>
             this._service.search(term).pipe(
               
-              tap(() => this.searchFailed = false),
+              tap(() => {
+                // console.log("test") //Every time we search
+                this.searchFailed = false
+              }),
               catchError(() => {
                 this.searchFailed = true;
                 return of([]);
               }))
           ),
-          tap(() => this.searching = false)
+          tap(() => {
+            this.searching = false
+            // console.log("apple") //Every time we search
+          })
         )
 
   formatter = (x: {name: string, backdrop_path: string}) => x.name;
+
+  tmdb_id = "";
+  media_type = "";
+  selectedItem(event: any) {
+    // this.clickedItem = item
+    this.tmdb_id = event.item.id;
+    this.media_type = event.item.media_type;
+
+    console.log({"tmdb_id": this.tmdb_id,
+                  "media_type": this.media_type})
+    console.log(`/watch/${this.media_type}/${this.tmdb_id}`)
+    this.router.navigate([`/watch/${this.media_type}/${this.tmdb_id}`]);
+    
+  }
 
 }
