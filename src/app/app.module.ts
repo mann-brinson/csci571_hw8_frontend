@@ -23,10 +23,13 @@ import { MylistComponent } from './components/mylist/mylist.component';
 import { MultiItemCarouselComponent } from './components/multi-item-carousel/multi-item-carousel.component';
 import { TypeaheadComponent } from './components/typeahead/typeahead.component';
 import { FormsModule } from '@angular/forms';
+import { YoutubeComponent } from './components/youtube/youtube.component';
 
 // import { MDBBootstrapModulesPro, MDBSpinningPreloader } from 'ng-uikit-pro-standard';
 
 // import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.module';
+
+import { YoutubeModule } from './components/youtube/youtube.module';
 
 @NgModule({
   declarations: [
@@ -39,14 +42,15 @@ import { FormsModule } from '@angular/forms';
     MoviepageComponent,
     TvpageComponent,
     MultiItemCarouselComponent,
-    TypeaheadComponent,
+    TypeaheadComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    YoutubeModule
   ],
   providers: [HomepageService, MoviepageService, TvpageService],
   bootstrap: [AppComponent]
