@@ -10,13 +10,7 @@ export class HomepageService {
 
     constructor(private http: HttpClient) {}
 
-    // ATTEMPT 1
-    // getHomepage(): Observable<HomeObj> {
-    //     return this.http.get<HomeObj>(this._url)
-    //         // .pipe()
-    // }
-
-    // ATTEMPT 4
+    // WORKING
     getHomepage(): Observable<HomeObj> {
         return this.http.get<HomeObj>(this._url)
     }

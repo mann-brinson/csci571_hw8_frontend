@@ -1,10 +1,69 @@
+<head>
+<style>
+:host ::ng-deep img {
+    /* width: 750px; */
+    resize: both;
+    max-width: 1200px;
+}
+
+ngb-carousel .picsum-img-wrapper {
+  position: relative;
+  height: 0;
+  padding-top: 55%; /* Keep ratio for 900x500 images */
+}
+
+ngb-carousel .picsum-img-wrapper>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* width: 750px; */
+}
+</style>
+</head>
+
 <h1>Home Header</h1>
 
-<div>{{holder | json}}</div>
+<div>
+    <a routerLink="/watch/movie/155">Movie Link</a><br>
+    <a routerLink="/watch/tv/155">TV Link</a><br>
+</div>
 
-<!-- <div>{{ data | json }}</div> -->
+<h2>Currently Playing (Links) Works</h2>
+<ngb-carousel>
+    <ng-template ngbSlide *ngFor="let movie of movies_now_playing">
+        <!-- <div *ngIf="movie.id" class="id">{{movie.id}}</div> -->
+        <div class="container">
+            <div class="row">
+                <div class="card">
+                    <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
+                        <img id={{movie.id}} [src]="movie.backdrop_path">
+                        <div class="carousel-caption">
+                            <h3>{{ movie.name }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!-- <div>{{ posts2 | json }}</div> -->
+    </ng-template>
+</ngb-carousel>
 
-<!-- <button (click)="getPosts()"></button> -->
-<!-- <div>{{ posts | json }}</div> -->
+<h2>Popular Movies</h2>
+<app-multi-item-carousel [movies_list_raw]="movies_popular" [entity_type]="'movie'"></app-multi-item-carousel>
+
+<h2>Top Rated Movies</h2>
+<app-multi-item-carousel [movies_list_raw]="movies_top_rated" [entity_type]="'movie'"></app-multi-item-carousel>
+
+<h2>Trending Movies</h2>
+<app-multi-item-carousel [movies_list_raw]="movies_trending" [entity_type]="'movie'"></app-multi-item-carousel>
+
+<h2>Popular TV Shows</h2>
+<app-multi-item-carousel [movies_list_raw]="tv_popular" [entity_type]="'tv'"></app-multi-item-carousel>
+
+<h2>Top Rated TV Shows</h2>
+<app-multi-item-carousel [movies_list_raw]="tv_top_rated" [entity_type]="'tv'"></app-multi-item-carousel>
+
+<h2>Trending TV Shows</h2>
+<app-multi-item-carousel [movies_list_raw]="tv_trending" [entity_type]="'tv'"></app-multi-item-carousel>

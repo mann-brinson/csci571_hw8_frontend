@@ -1,0 +1,16 @@
+<ngb-carousel>
+    <ng-template ngbSlide *ngFor="let group of slides">
+        <div class="container">
+            <div class="row">
+                <!-- TODO: Event emitter service to call the getMoviePage() method on -->
+                <!-- <div class="col-sm-2 card" *ngFor="let card of group"> -->
+                <div class="col-sm-2 card" *ngFor="let card of group" (click)="gotoMovieTvPage($event)">
+                    <img class="card-img-top" style="max-width:200px;min-width:100px" src="{{card.poster_path}}" >
+                    <div class="card-img-overlay">
+                        <h5 id={{card.id}} class="card-title" style="color:white;">{{card.name}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel>

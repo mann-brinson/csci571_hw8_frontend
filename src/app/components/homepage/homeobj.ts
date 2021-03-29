@@ -1,5 +1,16 @@
+import { MovieItem } from './movieItem';
+import { MovieTvItem } from './movieTvItem';
+
 export interface HomeObj {
-    head: object,
-    movie: object,
-    tv: object
+    head: {now_playing: MovieItem[]},
+    movie: [
+        {popular: MovieTvItem[]},
+        {top_rated: MovieTvItem[]},
+        {trending: MovieTvItem[]}
+    ],
+    tv: [
+        {popular: MovieTvItem[]},
+        {top_rated: MovieTvItem[]},
+        {trending: MovieTvItem[]}
+    ]
 }

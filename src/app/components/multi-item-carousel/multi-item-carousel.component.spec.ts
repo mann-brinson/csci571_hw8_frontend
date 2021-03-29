@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FirstpageComponent } from './firstpage.component';
+import { MultiItemCarouselComponent } from './multi-item-carousel.component';
 
-describe('FirstpageComponent', () => {
-  let component: FirstpageComponent;
-  let fixture: ComponentFixture<FirstpageComponent>;
+describe('MultiItemCarouselComponent', () => {
+  let component: MultiItemCarouselComponent;
+  let fixture: ComponentFixture<MultiItemCarouselComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FirstpageComponent ]
+      declarations: [ MultiItemCarouselComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FirstpageComponent);
+    fixture = TestBed.createComponent(MultiItemCarouselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
