@@ -16,6 +16,8 @@ export class HomepageComponent implements OnInit {
   movies_now_playing: MovieItem[] = [];
   movies_popular: MovieTvItem[] = [];
 
+  slides: any = [[]];
+
   constructor(private homepageService: HomepageService,
     private router: Router) { }
 
@@ -29,7 +31,13 @@ export class HomepageComponent implements OnInit {
         this.movies_now_playing = data.head.now_playing;
         this.movies_popular = data.movie[0].popular;
 
-        // head_movies = data.head
+        // Make a set of cards
+        var chunkSize = 6;
+        let R = [];
+        for (let i = 0, len = this.movies_popular.length; i < len; i += chunkSize) {
+          R.push(this.movies_popular.slice(i, i + chunkSize));
+        }
+        this.slides = R;
       })  
   }
 
@@ -37,6 +45,7 @@ export class HomepageComponent implements OnInit {
     let movie_id: string = (event.target as Element).id;
     this.router.navigate([`/watch/movie/${movie_id}`]);
   }
+
 
 
 }

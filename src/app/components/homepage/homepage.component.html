@@ -3,7 +3,7 @@
 :host ::ng-deep img {
     /* width: 750px; */
     resize: both;
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 ngb-carousel .picsum-img-wrapper {
@@ -31,22 +31,56 @@ ngb-carousel .picsum-img-wrapper>img {
 </div>
 
 <h2>Currently Playing (Links) Works</h2>
-<ngb-carousel>
-    <ng-template ngbSlide *ngFor="let movie of movies_now_playing">
-        <div *ngIf="movie.id" class="id">{{movie.id}}</div>
+<!-- <ngb-carousel>
+    <ng-template ngbSlide *ngFor="let movie of movies_now_playing"> -->
+        <!-- <div *ngIf="movie.id" class="id">{{movie.id}}</div> -->
 
-        <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
+        <!-- <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
             <img id={{movie.id}} [src]="movie.backdrop_path">
         </div>
         <div class="carousel-caption">
             <h3>{{ movie.name }}</h3>
         </div>
     </ng-template>
+</ngb-carousel> -->
+
+<ngb-carousel>
+    <ng-template ngbSlide *ngFor="let movie of movies_now_playing">
+        <!-- <div *ngIf="movie.id" class="id">{{movie.id}}</div> -->
+        <div class="container">
+            <div class="row">
+                <div class="card">
+                    <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
+                        <img id={{movie.id}} [src]="movie.backdrop_path">
+                        <div class="carousel-caption">
+                            <h3>{{ movie.name }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ng-template>
 </ngb-carousel>
 
-<h2>Multi-item carousel test : Popular Movies</h2>
-<div>{{movies_popular | json}}</div>
-<app-multi-item-carousel></app-multi-item-carousel>
+<h2>Popular Movies</h2>
+<!-- <div>{{slides | json}}</div> -->
+<ngb-carousel>
+    <ng-template ngbSlide *ngFor="let group of slides">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 card" *ngFor="let card of group" (click)="gotoMoviePage($event)">
+                    <img id={{card.id}} class="card-img-top" 
+                        style="max-width:200px;min-width:100px" 
+                        src="{{card.poster_path}}" >
+                    <div class="card-img-overlay">
+                        <h5 class="card-title" style="color:white;">{{card.name}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel>
 
 <h2>All Data</h2>
 <div>{{holder | json}}</div>
