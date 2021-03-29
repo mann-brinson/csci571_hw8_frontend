@@ -8,9 +8,9 @@ export interface HomeObj {
         {top_rated: MovieTvItem[]},
         {trending: MovieTvItem[]}
     ],
-    tv: {
-        popular: MovieTvItem[],
-        top_rated: MovieTvItem[],
-        trending: MovieTvItem[]
-    },
+    tv: [
+        {popular: MovieTvItem[]},
+        {top_rated: MovieTvItem[]},
+        {trending: MovieTvItem[]}
+    ]
 }

@@ -13,8 +13,14 @@ import { MovieTvItem } from './movieTvItem';
 export class HomepageComponent implements OnInit {
 
   holder = {};
-  movies_now_playing: MovieItem[] = [];
+  public movies_now_playing: MovieItem[] = [];
   public movies_popular: MovieTvItem[] = [];
+  public movies_top_rated: MovieTvItem[] = [];
+  public movies_trending: MovieTvItem[] = [];
+
+  public tv_popular: MovieTvItem[] = [];
+  public tv_top_rated: MovieTvItem[] = [];
+  public tv_trending: MovieTvItem[] = [];
 
   slides: any = [[]];
 
@@ -30,14 +36,14 @@ export class HomepageComponent implements OnInit {
         this.holder = data;
         this.movies_now_playing = data.head.now_playing;
         this.movies_popular = data.movie[0].popular;
+        this.movies_top_rated = data.movie[1].top_rated;
+        this.movies_trending = data.movie[2].trending;
 
-        // Make a set of cards
-        var chunkSize = 6;
-        let R = [];
-        for (let i = 0, len = this.movies_popular.length; i < len; i += chunkSize) {
-          R.push(this.movies_popular.slice(i, i + chunkSize));
-        }
-        this.slides = R;
+        this.tv_popular = data.tv[0].popular;
+        this.tv_top_rated = data.tv[1].top_rated;
+        this.tv_trending = data.tv[2].trending;
+
+
       })  
   }
 

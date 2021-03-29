@@ -1,10 +1,8 @@
-<p>multi-item-carousel works!</p>
-<!-- {{slides | json}} -->
-
 <ngb-carousel>
     <ng-template ngbSlide *ngFor="let group of slides">
         <div class="container">
             <div class="row">
+                <!-- TODO: Event emitter service to call the getMoviePage() method on parent service -->
                 <!-- <div class="col-sm-2 card" *ngFor="let card of group" (click)="gotoMoviePage($event)"> -->
                 <div class="col-sm-2 card" *ngFor="let card of group">
                     <img id={{card.id}} class="card-img-top" 
