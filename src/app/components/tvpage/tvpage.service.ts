@@ -11,8 +11,10 @@ export class TvpageService {
     constructor(private http: HttpClient) {}
 
     // WORKING
-    getTvpage(): Observable<TvObj> {
-        return this.http.get<TvObj>(this._url)
+    getTvpage(tv_id: string): Observable<TvObj> {
+
+        var url = `http://localhost:8080/watch/tv/${tv_id}`
+        return this.http.get<TvObj>(url)
     }
 
 }
