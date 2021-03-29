@@ -20,11 +20,11 @@ export class MoviepageComponent implements OnInit {
 
   ngOnInit() {
     var movie_id = this.route.snapshot.paramMap.get("tmdb_id");
-    console.log({"test": movie_id});
+    // console.log({"test": movie_id});
 
     this.moviepageService.getMoviepage(movie_id!)
       .subscribe((data) => {
-        console.log(data);
+        // console.log(data);
         this.holder = data;
       })  
   }

@@ -21,6 +21,8 @@ import { TvpageComponent } from './components/tvpage/tvpage.component';
 
 import { MylistComponent } from './components/mylist/mylist.component';
 import { MultiItemCarouselComponent } from './components/multi-item-carousel/multi-item-carousel.component';
+import { TypeaheadComponent } from './components/typeahead/typeahead.component';
+import { FormsModule } from '@angular/forms';
 
 // import { MDBBootstrapModulesPro, MDBSpinningPreloader } from 'ng-uikit-pro-standard';
 
@@ -37,12 +39,14 @@ import { MultiItemCarouselComponent } from './components/multi-item-carousel/mul
     MoviepageComponent,
     TvpageComponent,
     MultiItemCarouselComponent,
+    TypeaheadComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [HomepageService, MoviepageService, TvpageService],
   bootstrap: [AppComponent]
