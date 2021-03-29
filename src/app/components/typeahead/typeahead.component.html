@@ -1,5 +1,7 @@
 <!-- MOVIE APP -->
-<fieldset class="form-inline">
+<!-- VERSION 1 Returned results only show name -->
+<h2>Search: Version 1</h2>
+<!-- <fieldset class="form-inline">
     <div class="form-group">
       <label for="typeahead-http">Search for a wiki page:</label>
       <input id="typeahead-http" type="text" 
@@ -14,5 +16,22 @@
       <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
     </div>
 </fieldset>
+<hr>
+<pre>Model: {{ model | json }}</pre> -->
+
+<!-- VERSION 2 -->
+<h2>Search: Version 2</h2>
+<ng-template #rt let-r="result" let-t="term">
+  <img [src]="r['backdrop_path']" class="mr-1" style="width: 16px">
+  <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
+
+<label for="typeahead-template">Search for a state:</label>
+<input id="typeahead-template" type="text" 
+  class="form-control" 
+  [(ngModel)]="model" 
+  [ngbTypeahead]="search" 
+  [resultTemplate]="rt"
+  [inputFormatter]="formatter" />
 <hr>
 <pre>Model: {{ model | json }}</pre>

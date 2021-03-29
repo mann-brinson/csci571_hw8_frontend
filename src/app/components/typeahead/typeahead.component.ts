@@ -34,22 +34,12 @@ export class SearchService {
   styleUrls: ['./typeahead.component.css']
 })
 export class TypeaheadComponent {
-  model: any;
+  public model: any;
   searching = false;
   searchFailed = false;
 
 
   constructor(private _service: SearchService) { }
-
-  // search = (text$: Observable<string>) =>
-  // text$.pipe(
-  //   debounceTime(200),
-  //   distinctUntilChanged(),
-  //   map(term => term.length < 2
-  //     ? []
-      
-  //   )
-  // )
 
   inputFormatMovieListValue(value: any)   {
     if(value.name)
@@ -61,25 +51,44 @@ export class TypeaheadComponent {
     return value.name;
   } 
 
-  search = (text$: 
-    Observable<string>) =>
-      text$.pipe(
-        debounceTime(300),
-        distinctUntilChanged(),
-        tap(() => this.searching = true),
-        switchMap(term =>
-          this._service.search(term).pipe(
+  // VERSION 1
+  // search = (text$: 
+  //   Observable<string>) =>
+  //     text$.pipe(
+  //       debounceTime(300),
+  //       distinctUntilChanged(),
+  //       tap(() => this.searching = true),
+  //       switchMap(term =>
+  //         this._service.search(term).pipe(
             
-            tap(() => this.searchFailed = false),
-            catchError(() => {
-              this.searchFailed = true;
-              return of([]);
-            }))
-        ),
-        tap(() => this.searching = false)
-      )
+  //           tap(() => this.searchFailed = false),
+  //           catchError(() => {
+  //             this.searchFailed = true;
+  //             return of([]);
+  //           }))
+  //       ),
+  //       tap(() => this.searching = false)
+  //     )
 
-  // ngOnInit(): void {
-  // }
+  // VERSION 2
+  search = (text$: 
+      Observable<string>) =>
+        text$.pipe(
+          debounceTime(300),
+          distinctUntilChanged(),
+          tap(() => this.searching = true),
+          switchMap(term =>
+            this._service.search(term).pipe(
+              
+              tap(() => this.searchFailed = false),
+              catchError(() => {
+                this.searchFailed = true;
+                return of([]);
+              }))
+          ),
+          tap(() => this.searching = false)
+        )
+
+  formatter = (x: {name: string, backdrop_path: string}) => x.name;
 
 }
