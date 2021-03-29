@@ -1,9 +1,11 @@
 <h1>Movie</h1>
 <!-- <app-commonpage [dataReceived]="message"></app-commonpage> -->
-<app-commonpage [test]="test"></app-commonpage>
+<!-- <app-commonpage [test]="test"></app-commonpage> -->
 
 <h2>Youtube Player</h2>
-<app-youtube></app-youtube>
+<!-- <div>{{preview_video | json}}</div> -->
+<!-- <app-youtube></app-youtube> -->
+<app-youtube [video_data]="preview_video"></app-youtube>
 
 <h2>Movie Contents</h2>
 <div>{{holder | json}}</div>
