@@ -14,7 +14,7 @@ export class HomepageComponent implements OnInit {
 
   holder = {};
   movies_now_playing: MovieItem[] = [];
-  movies_popular: MovieTvItem[] = [];
+  public movies_popular: MovieTvItem[] = [];
 
   slides: any = [[]];
 
@@ -25,7 +25,7 @@ export class HomepageComponent implements OnInit {
     this.homepageService.getHomepage()
       .subscribe((data) => {
         // console.log(data.head.now_playing[0].id);
-        console.log(data.movie);
+        // console.log(data.movie);
 
         this.holder = data;
         this.movies_now_playing = data.head.now_playing;

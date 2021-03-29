@@ -22,6 +22,8 @@ import { TvpageComponent } from './components/tvpage/tvpage.component';
 import { MylistComponent } from './components/mylist/mylist.component';
 import { MultiItemCarouselComponent } from './components/multi-item-carousel/multi-item-carousel.component';
 
+// import { MDBBootstrapModulesPro, MDBSpinningPreloader } from 'ng-uikit-pro-standard';
+
 // import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.module';
 
 @NgModule({

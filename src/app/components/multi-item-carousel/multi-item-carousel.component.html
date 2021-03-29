@@ -1,1 +1,20 @@
 <p>multi-item-carousel works!</p>
+<!-- {{slides | json}} -->
+
+<ngb-carousel>
+    <ng-template ngbSlide *ngFor="let group of slides">
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col-sm-2 card" *ngFor="let card of group" (click)="gotoMoviePage($event)"> -->
+                <div class="col-sm-2 card" *ngFor="let card of group">
+                    <img id={{card.id}} class="card-img-top" 
+                        style="max-width:200px;min-width:100px" 
+                        src="{{card.poster_path}}" >
+                    <div class="card-img-overlay">
+                        <h5 class="card-title" style="color:white;">{{card.name}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel>

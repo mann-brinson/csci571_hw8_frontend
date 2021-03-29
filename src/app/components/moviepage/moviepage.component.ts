@@ -9,7 +9,8 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class MoviepageComponent implements OnInit {
 
-  public message: string = "Passing the data"; //Can give it any type obj, etc.
+  // public message: string = "Passing the data !!!"; //Can give it any type obj, etc.
+  public test: object = {"test": 1, "apple": 2};
   // public movie_id: string = "";
 
   holder = {};
@@ -19,7 +20,6 @@ export class MoviepageComponent implements OnInit {
 
   ngOnInit() {
     var movie_id = this.route.snapshot.paramMap.get("tmdb_id");
-    // this.movie_id = this.route.snapshot.paramMap.get("tmdb_id");
     console.log({"test": movie_id});
 
     this.moviepageService.getMoviepage(movie_id!)

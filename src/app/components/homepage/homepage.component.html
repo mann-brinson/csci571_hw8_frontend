@@ -31,19 +31,6 @@ ngb-carousel .picsum-img-wrapper>img {
 </div>
 
 <h2>Currently Playing (Links) Works</h2>
-<!-- <ngb-carousel>
-    <ng-template ngbSlide *ngFor="let movie of movies_now_playing"> -->
-        <!-- <div *ngIf="movie.id" class="id">{{movie.id}}</div> -->
-
-        <!-- <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
-            <img id={{movie.id}} [src]="movie.backdrop_path">
-        </div>
-        <div class="carousel-caption">
-            <h3>{{ movie.name }}</h3>
-        </div>
-    </ng-template>
-</ngb-carousel> -->
-
 <ngb-carousel>
     <ng-template ngbSlide *ngFor="let movie of movies_now_playing">
         <!-- <div *ngIf="movie.id" class="id">{{movie.id}}</div> -->
@@ -63,7 +50,10 @@ ngb-carousel .picsum-img-wrapper>img {
     </ng-template>
 </ngb-carousel>
 
-<h2>Popular Movies</h2>
+<h2>Popular Movies - Test</h2>
+<app-multi-item-carousel [movies_popular]="movies_popular"></app-multi-item-carousel>
+
+<h2>Popular Movies - Working </h2>
 <!-- <div>{{slides | json}}</div> -->
 <ngb-carousel>
     <ng-template ngbSlide *ngFor="let group of slides">
@@ -81,6 +71,8 @@ ngb-carousel .picsum-img-wrapper>img {
         </div>
     </ng-template>
 </ngb-carousel>
+
+<!-- <h2>Top Rated Movies</h2> -->
 
 <h2>All Data</h2>
 <div>{{holder | json}}</div>

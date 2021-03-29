@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CommonpageComponent implements OnInit {
   @Input() dataReceived:string = "DefaultValue!";
+  @Input() test:object = {};
+
   constructor() { }
 
   ngOnInit(): void {
