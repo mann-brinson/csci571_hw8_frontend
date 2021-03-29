@@ -24,7 +24,7 @@ export class HomepageComponent implements OnInit {
     this.homepageService.getHomepage()
       .subscribe((data) => {
         // console.log(data.head.now_playing[0].id);
-        console.log(data.head.now_playing);
+        // console.log(data.head.now_playing);
         this.holder = data;
         this.movies = data.head.now_playing;
 
@@ -37,7 +37,7 @@ export class HomepageComponent implements OnInit {
     // console.log(event);
     let movie_id: string = (event.target as Element).id;
     // var movie_id = srcElem.id
-    console.log(movie_id);
+    // console.log(movie_id);
     this.router.navigate([`/watch/movie/${movie_id}`]);
   }
 

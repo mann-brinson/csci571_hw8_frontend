@@ -30,20 +30,7 @@ ngb-carousel .picsum-img-wrapper>img {
     <a routerLink="/watch/tv/155">TV Link</a><br>
 </div>
 
-<h2>Currently Playing - Works</h2>
-<ngb-carousel>
-    <ng-template ngbSlide *ngFor="let movie of movies">
-        
-        <div class="picsum-img-wrapper">
-            <img [src]="movie.backdrop_path">
-        </div>
-        <div class="carousel-caption">
-            <h3>{{ movie.name }}</h3>
-        </div>
-    </ng-template>
-</ngb-carousel>
-
-<h2>Carousel Linking Test</h2>
+<h2>Currently Playing (Links) Works</h2>
 <ngb-carousel>
     <ng-template ngbSlide *ngFor="let movie of movies">
         <div *ngIf="movie.id" class="id">{{movie.id}}</div>

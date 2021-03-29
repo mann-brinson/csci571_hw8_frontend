@@ -11,8 +11,12 @@ export class MoviepageService {
     constructor(private http: HttpClient) {}
 
     // WORKING
-    getMoviepage(): Observable<MovieObj> {
-        return this.http.get<MovieObj>(this._url)
+    // getMoviepage(movie_id: string): Observable<MovieObj> {
+    getMoviepage(movie_id: string): Observable<MovieObj> {
+        
+        // return this.http.get<MovieObj>(this._url)
+        var url = `http://localhost:8080/watch/movie/${movie_id}`
+        return this.http.get<MovieObj>(url)
     }
 
 }
