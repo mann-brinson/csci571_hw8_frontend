@@ -7,7 +7,7 @@ import { ActivatedRoute } from "@angular/router";
   templateUrl: './tvpage.component.html',
   styleUrls: ['./tvpage.component.css']
 })
-export class TvpageComponent implements OnInit {
+export class TvpageComponent {
 
   public message: string = "Passing the data"; //Can give it any type obj, etc.
 
@@ -19,11 +19,15 @@ export class TvpageComponent implements OnInit {
   ngOnInit() {
     var tv_id = this.route.snapshot.paramMap.get("tmdb_id");
 
-    this.tvpageService.getTvpage(tv_id!)
+    // Will trigger whenver the tmdb_id in route changes
+    this.route.params.subscribe(routeParams => {
+      console.log({"new tmdb_id": routeParams.tmdb_id})
+
+      this.tvpageService.getTvpage(routeParams.tmdb_id!)
       .subscribe((data) => {
-        console.log(data);
         this.holder = data;
       })  
+    })
   }
 
 }
