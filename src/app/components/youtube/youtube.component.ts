@@ -14,8 +14,8 @@ export class YoutubeComponent {
 
   ngOnChanges() {
     if ("key" in this.video_data) {
-      console.log("creating youtube vid");
-      console.log(this.video_data);
+      // console.log("creating youtube vid");
+      // console.log(this.video_data);
       const tag = document.createElement('script');
   
       tag.src = "https://www.youtube.com/iframe_api";

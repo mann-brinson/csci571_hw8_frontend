@@ -1,1 +1,5 @@
-<p>mylist works!</p>
+<h2>Watch List</h2>
+
+<div *ngIf="localStorage_not_empty">
+    {{ localStorage_items | json }}
+</div>

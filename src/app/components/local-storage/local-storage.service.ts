@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,8 @@ import { Injectable } from '@angular/core';
 
 export class LocalStorageService {
   localStorage: Storage;
+
+  changes$ = new Subject();
 
   constructor() {
     this.localStorage = window.localStorage;
@@ -34,6 +37,13 @@ export class LocalStorageService {
 
   clear(): void {
     this.localStorage.clear();
+  }
+
+  existsYn(key: string): boolean {
+    if (key in this.localStorage) {
+      return true
+    }
+    return false
   }
 
   get isLocalStorageSupported(): boolean {

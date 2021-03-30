@@ -14,6 +14,7 @@ export class MoviepageComponent {
   holder = {};
   public preview_video: any = {};
   public details: any = {};
+  public entity_type: string = "";
   // public preview_video: VideoItem = new(...);
   // public preview_video = {} as VideoItem;
 
@@ -24,7 +25,7 @@ export class MoviepageComponent {
   // ngOnInit() {
   ngOnInit() {
     var movie_id = this.route.snapshot.paramMap.get("tmdb_id");
-    console.log({"paramMap": this.route.snapshot.paramMap});
+    // console.log({"paramMap": this.route.snapshot.paramMap});
 
     // console.log({"current type": window.location.pathname.split("/")[2]});
 
@@ -32,9 +33,10 @@ export class MoviepageComponent {
     this.route.params.subscribe(routeParams => {
       // console.log({"new tmdb_id": routeParams.tmdb_id})
 
-      var entity_type = window.location.pathname.split("/")[2]
+      // var entity_type = window.location.pathname.split("/")[2]
+      this.entity_type = window.location.pathname.split("/")[2]
 
-      this.moviepageService.getMoviepage(routeParams.tmdb_id!, entity_type)
+      this.moviepageService.getMoviepage(routeParams.tmdb_id!, this.entity_type)
       .subscribe((data) => {
         // console.log({"current type": window.location.pathname.split("/")[2]});
 

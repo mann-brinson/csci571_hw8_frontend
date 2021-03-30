@@ -1,12 +1,15 @@
 <p>local-storage works!</p>
 <button type="button" data-toggle="button" class="btn btn-primary" 
-        (click)="putMovie('movie', 'DarkKnight', 'object')">Add Movie</button><br>
+        (click)="putMovie()">Add Movie</button><br>
 
 <button type="button" class="btn btn-primary" 
-        (click)="removeMovie('movie', 'DarkKnight', 'object')">Remove Movie</button><br>
+        (click)="removeMovie()">Remove Movie</button><br>
 
 <button type="button" class="btn btn-primary" 
         (click)="clearWatchList()">Clear</button><br>
 
 <button id="button" type="button" class="btn btn-primary" 
         (click)="changeLabelName()">Add to Watchlist</button><br>
+
+<button id="button-2" type="button" class="btn btn-primary" 
+        (click)="checkForCurrentMovie()">In Watchlist?</button><br>
