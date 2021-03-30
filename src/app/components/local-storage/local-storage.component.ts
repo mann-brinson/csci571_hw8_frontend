@@ -45,11 +45,79 @@ export class LocalStorageComponent {
     console.log(this.localStorageService.localStorage)
   }
 
+  putMoviev2() {
+    // console.log(this.localStorageService.localStorage.length)
+    var len_storage: number = this.localStorageService.localStorage.length
+    var key = "watchlist"
+
+    // NO WATCHLIST
+    if (len_storage == 0) {
+      // console.log("storage is empty")
+      var value = [{"tmdb_id": this.movie_details.tmdb_id,
+                    "name": this.movie_details.name,
+                    "entity_type": this.entity_type,
+                    "poster_path": this.movie_details.poster_path
+                  }]
+      this.localStorageService.set(key, value);
+      console.log(this.localStorageService.localStorage)
+
+    // PRE-EXISTING WATCHLIST
+    } else {
+      var temp_val = JSON.parse(this.localStorageService.localStorage.getItem(key)!)
+      console.log({"val to search": this.movie_details.tmdb_id})
+      console.log({"val to be searched": temp_val})
+
+      var result = temp_val.filter((record: any) => 
+        record.tmdb_id == this.movie_details.tmdb_id && record.entity_type == this.entity_type)
+
+      console.log({"result": result.length})
+
+      if (result.length == 0) { //RECORD DOES NOT EXIST
+        console.log("storage is not empty")
+        var record = {"tmdb_id": this.movie_details.tmdb_id,
+                      "name": this.movie_details.name,
+                      "entity_type": this.entity_type,
+                      "poster_path": this.movie_details.poster_path
+                    }
+        temp_val.splice(0, 0, record)
+        this.localStorageService.set(key, temp_val)
+        console.log({"storage after": this.localStorageService.localStorage})
+      }
+    }
+  }
+
   removeMovie() {
     var key = `${this.entity_type}-${this.movie_details.tmdb_id}`
     this.localStorageService.remove(key)
     console.log(this.localStorageService.localStorage)
   }
+
+  removeMoviev2() {
+    var len_storage: number = this.localStorageService.localStorage.length
+    var key = "watchlist"
+
+    if (len_storage == 0) {
+      console.log("No watchlist to remove items from.")
+    } else {
+      console.log(this.movie_details.tmdb_id)
+      console.log(this.entity_type)
+
+      var watchlist_prev = JSON.parse(this.localStorageService.localStorage.getItem(key)!)
+      console.log({"prev": watchlist_prev})
+      // watchlist_new = watchlist_prev.filter(function (record) {
+      //   return record.tmdb_id == this.movie_details.tmdb_id && record.entity_type == this.entity_type
+      // })
+      var watchlist_new = watchlist_prev.filter((record: any) => 
+        record.tmdb_id != this.movie_details.tmdb_id || record.entity_type != this.entity_type)
+      console.log({"new": watchlist_new})
+
+      this.localStorageService.set(key, watchlist_new)
+
+
+
+    }
+  }
+
 
   clearWatchList() {
     this.localStorageService.clear()

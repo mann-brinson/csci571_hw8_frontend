@@ -1,5 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { LocalStorageService } from 'src/app/components/local-storage/local-storage.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class MylistComponent {
   localStorage_items: any = [];
   // localStorage = this.localStorageService
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(
+    private localStorageService: LocalStorageService,
+    private route: ActivatedRoute) { }
     
   ngOnInit() {
     // console.log(this.localStorageChanges$)
@@ -39,6 +42,10 @@ export class MylistComponent {
       // console.log(this.localStorage_items)
 
     }
+
+    this.route.params.subscribe(routeParams => {
+      console.log("trigger")
+    })
     
   }
 
