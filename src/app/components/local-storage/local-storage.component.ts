@@ -98,6 +98,7 @@ export class LocalStorageComponent {
 
     if (len_storage == 0) {
       console.log("No watchlist to remove items from.")
+
     } else {
       console.log(this.movie_details.tmdb_id)
       console.log(this.entity_type)
@@ -109,11 +110,18 @@ export class LocalStorageComponent {
       // })
       var watchlist_new = watchlist_prev.filter((record: any) => 
         record.tmdb_id != this.movie_details.tmdb_id || record.entity_type != this.entity_type)
-      console.log({"new": watchlist_new})
+      console.log({"new": watchlist_new.length})
 
-      this.localStorageService.set(key, watchlist_new)
+      if (watchlist_new.length == 0) {
+        console.log("new watchlist is empty")
+        this.localStorageService.clear()
+        console.log(this.localStorageService.localStorage)
+        
+      } else {
+        this.localStorageService.set(key, watchlist_new)
+      }
 
-
+      
 
     }
   }

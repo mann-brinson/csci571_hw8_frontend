@@ -11,6 +11,7 @@ import { LocalStorageService } from 'src/app/components/local-storage/local-stor
 export class MylistComponent {
   localStorageChanges$ = this.localStorageService.changes$;
   len_localStorage: number = 0;
+  len_localStorage2: any;
   localStorage_not_empty: boolean = false;
   localStorage_items: any = [];
   // localStorage = this.localStorageService
@@ -21,12 +22,17 @@ export class MylistComponent {
     
   ngOnInit() {
     // console.log(this.localStorageChanges$)
+    console.log("trigger")
     this.len_localStorage = this.localStorageService.localStorage.length
+    this.len_localStorage2 = JSON.parse(this.localStorageService.localStorage.getItem("key")!)
+
+    console.log({"len_localstorage": this.len_localStorage})
+    console.log({"len_localstorage2": this.len_localStorage2})
 
     if (this.len_localStorage > 0) {
 
       console.log("Watchlist is not empty")
-      this.localStorage_not_empty = true;
+      this.localStorage_not_empty = true
 
       for (var i = 0; i < this.len_localStorage; i++) {
         var record: object = {}
@@ -42,10 +48,6 @@ export class MylistComponent {
       // console.log(this.localStorage_items)
 
     }
-
-    this.route.params.subscribe(routeParams => {
-      console.log("trigger")
-    })
     
   }
 
