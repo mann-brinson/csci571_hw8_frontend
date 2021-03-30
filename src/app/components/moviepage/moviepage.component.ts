@@ -2,7 +2,6 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import { MoviepageService } from './moviepage.service';
 import { ActivatedRoute } from "@angular/router";
 
-import { VideoItem } from './videoItem';
 
 @Component({
   selector: 'app-moviepage',
@@ -36,8 +35,7 @@ export class MoviepageComponent {
 
       this.moviepageService.getMoviepage(routeParams.tmdb_id!, entity_type)
       .subscribe((data) => {
-
-        console.log({"current type": window.location.pathname.split("/")[2]});
+        // console.log({"current type": window.location.pathname.split("/")[2]});
 
         this.holder = data;
         this.preview_video = data.video;

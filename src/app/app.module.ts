@@ -16,20 +16,16 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { MoviepageService } from './components/moviepage/moviepage.service';
 import { MoviepageComponent } from './components/moviepage/moviepage.component';
 
-import { TvpageService } from './components/tvpage/tvpage.service';
-import { TvpageComponent } from './components/tvpage/tvpage.component';
-
 import { MylistComponent } from './components/mylist/mylist.component';
 import { MultiItemCarouselComponent } from './components/multi-item-carousel/multi-item-carousel.component';
 import { TypeaheadComponent } from './components/typeahead/typeahead.component';
 import { FormsModule } from '@angular/forms';
 import { YoutubeComponent } from './components/youtube/youtube.component';
 
-// import { MDBBootstrapModulesPro, MDBSpinningPreloader } from 'ng-uikit-pro-standard';
-
-// import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.module';
-
 import { YoutubeModule } from './components/youtube/youtube.module';
+
+import { LocalStorageComponent } from './components/local-storage/local-storage.component';
+import { LocalStorageService } from './components/local-storage/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -40,9 +36,9 @@ import { YoutubeModule } from './components/youtube/youtube.module';
     FirstChildComponent,
     MylistComponent,
     MoviepageComponent,
-    TvpageComponent,
     MultiItemCarouselComponent,
-    TypeaheadComponent
+    TypeaheadComponent,
+    LocalStorageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +48,7 @@ import { YoutubeModule } from './components/youtube/youtube.module';
     FormsModule,
     YoutubeModule
   ],
-  providers: [HomepageService, MoviepageService, TvpageService],
+  providers: [HomepageService, MoviepageService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
