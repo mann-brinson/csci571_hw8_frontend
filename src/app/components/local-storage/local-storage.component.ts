@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { LocalStorageService } from './local-storage.service';
   styleUrls: ['./local-storage.component.css']
 })
 export class LocalStorageComponent {
+
+  @Input() movie_details: any = {};
 
   constructor(private localStorageService: LocalStorageService) { }
 
@@ -30,6 +32,11 @@ export class LocalStorageComponent {
 
   toggled = false;
   changeLabelName() {
+
+    console.log({"button_status": this.toggled})
+    console.log({"details": this.movie_details});
+
+
     if (this.toggled == false) {
       this.toggled = true;
       document.getElementById("button")!.innerHTML = "Remove from Watchlist";

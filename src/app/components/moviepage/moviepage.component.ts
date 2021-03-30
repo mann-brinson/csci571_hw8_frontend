@@ -13,6 +13,7 @@ export class MoviepageComponent {
 
   holder = {};
   public preview_video: any = {};
+  public details: any = {};
   // public preview_video: VideoItem = new(...);
   // public preview_video = {} as VideoItem;
 
@@ -39,6 +40,7 @@ export class MoviepageComponent {
 
         this.holder = data;
         this.preview_video = data.video;
+        this.details = data.detail;
 
       })  
     })
