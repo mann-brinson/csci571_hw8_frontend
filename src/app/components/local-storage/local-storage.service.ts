@@ -46,6 +46,29 @@ export class LocalStorageService {
     return false
   }
 
+  existsYnV2(entity_type: string, tmdb_id: any): boolean {
+    if ("watchlist" in this.localStorage) {
+      console.log("watchlist exists")
+      console.log(this.localStorage.getItem("watchlist"))
+      var temp_val = this.localStorage.getItem("watchlist")!
+      
+      if (temp_val.length == 0) {
+        return false
+      }
+      else {
+        var result = JSON.parse(temp_val).filter((record: any) => 
+          record.tmdb_id == tmdb_id && record.entity_type == entity_type)
+        
+        if (result.length == 0) { //RECORD DOES NOT EXIST
+          return false
+        } 
+        return true
+      }
+    }
+    return false
+  }
+
+
   get isLocalStorageSupported(): boolean {
     return !!this.localStorage
   }
