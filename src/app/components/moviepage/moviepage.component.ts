@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import { MoviepageService } from './moviepage.service';
 import { ActivatedRoute } from "@angular/router";
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { MovieTvItem } from '../homepage/movieTvItem';
 
 @Component({
   selector: 'app-moviepage',
@@ -14,9 +15,13 @@ export class MoviepageComponent {
   holder = {};
   public preview_video: any = {};
   public details: any = {};
-  public entity_type: string = "";
-  // public preview_video: VideoItem = new(...);
-  // public preview_video = {} as VideoItem;
+  public entity_type: string = ""
+
+  public similar_empty_yn = true
+  public recommended_empty_yn = true
+
+  public similar: MovieTvItem[] = []
+  public recommended: MovieTvItem[] = []
 
   constructor(
     private moviepageService: MoviepageService,
@@ -43,12 +48,25 @@ export class MoviepageComponent {
       this.moviepageService.getMoviepage(routeParams.tmdb_id!, this.entity_type)
       .subscribe((data) => {
         // console.log({"current type": window.location.pathname.split("/")[2]});
+        console.log("made it here")
 
         this.holder = data;
         this.preview_video = data.video;
         this.details = data.detail;
 
-        console.log({"data": this.details})
+        this.similar = data.similar
+        this.recommended = data.recommended
+
+        //// SET EMPTY_YN FLAGS
+        if (this.similar.length != 0) {
+          this.similar_empty_yn = false
+        }
+
+        if (this.recommended.length != 0) {
+          this.recommended_empty_yn = false
+        }
+
+        console.log({"data": this.similar})
         // console.log({"localstorage": this.localStorageService.localStorage})
 
         //// ADD TO LRU_CACHE HERE

@@ -11,5 +11,15 @@
 <app-local-storage [movie_details]="details"
                    [entity_type]="entity_type"></app-local-storage>
 
+<div *ngIf="!similar_empty_yn">
+    <h2>Similar {{entity_type}}</h2>
+    <app-multi-item-carousel [movies_list_raw]="similar"></app-multi-item-carousel>
+</div>
+
+<div *ngIf="!recommended_empty_yn">
+    <h2>Recommended {{entity_type}}</h2>
+    <app-multi-item-carousel [movies_list_raw]="recommended"></app-multi-item-carousel>
+</div>
+
 <h2>Movie Contents</h2>
 <div>{{holder | json}}</div>

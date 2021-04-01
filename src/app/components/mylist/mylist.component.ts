@@ -46,51 +46,43 @@ export class MylistComponent {
     console.log({"len_localstorage": this.len_localStorage})
     // console.log({"len_localstorage2": this.len_localStorage2})
 
-    // if (this.len_localStorage > 0) {
-    //   console.log("Watchlist is not empty")
-    //   this.localStorage_not_empty = true
-    // }
+    //// JSON-TO-INTERFACE HELPERS
+    function adapt(mapper: any, json: any) {
+      let adaptedObj: any = {}
+      const fields: Array<string> = Object.keys(mapper)
+      for (let field of fields) {
+        const targetField: any = mapper[field]
+        adaptedObj[targetField] = json[field]
+      }
+      return adaptedObj
+    }
 
+    function JSONtoMovieTvItemMapper(json: any): MovieTvItem {
+      const mapper = {
+        'id': 'id',
+        'name': 'name',
+        'poster_path': 'poster_path',
+        'entity_type': 'entity_type'
+      }
+      return adapt(mapper, json)
+    }
+
+    //// DRIVER
     if (this.lru_cache != undefined) {
       console.log("lru_cache exists")
       this.lruCache_empty_yn = false
       this.lruCache_json = JSON.parse(this.lru_cache)
 
-      // this.lruCache_json.copyInto(JSON.parse(this.lru_cache))
-
-      console.log({"lruCache_json": typeof this.lruCache_json})
+      // console.log({"lruCache_json": typeof this.lruCache_json})
     }
 
     if (this.watchlist != undefined) {
       this.watchlist_empty_yn = false
-      // this.watchlist_json = JSON.parse(this.watchlist)
 
       var watchlist_json_v1 = JSON.parse(this.watchlist)
+      this.watchlist_json = watchlist_json_v1.map((record: any) => JSONtoMovieTvItemMapper(record))
       
-
-      function adapt(mapper: any, json: any) {
-        let adaptedObj: any = {}
-        const fields: Array<string> = Object.keys(mapper)
-        for (let field of fields) {
-          const targetField: any = mapper[field]
-          adaptedObj[targetField] = json[field]
-        }
-        return adaptedObj
-      }
-
-      function JSONtoMovieTvItemMapper(json: any): MovieTvItem {
-        const mapper = {
-          'id': 'id',
-          'name': 'name',
-          'poster_path': 'poster_path',
-          'entity_type': 'entity_type'
-        }
-        return adapt(mapper, json)
-      }
-      var test = watchlist_json_v1.map((record: any) => JSONtoMovieTvItemMapper(record))
-      this.watchlist_json = test
-      
-      console.log(test)
+      // console.log(this.watchlist_json)
 
     }
     
