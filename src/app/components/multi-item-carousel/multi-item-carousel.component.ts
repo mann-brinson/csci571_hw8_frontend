@@ -12,6 +12,7 @@ export class MultiItemCarouselComponent {
   @Input() movies_list_raw:MovieTvItem[] = [];
   @Input() entity_type:string = "";
 
+
   slides: any = [[]];
 
   constructor(private router: Router) { }
@@ -32,12 +33,14 @@ export class MultiItemCarouselComponent {
   }
 
   gotoMovieTvPage(event: Event) {
-    // console.log(event.target);
-    let movie_id: string = (event.target as Element).id;
-    console.log({"going to ": [this.entity_type, movie_id]})
-    // console.log(movie_id);
-    // console.log(this.entity_type);
-    console.log(`/watch/${this.entity_type}/${movie_id}`)
-    this.router.navigate([`/watch/${this.entity_type}/${movie_id}`]);
+    console.log(event.target);
+    // let movie_id: string = (event.target as Element).id
+    let entityType_movieId: string = (event.target as Element).id
+    var entity_type = entityType_movieId.split('-')[0]
+    var movie_id = entityType_movieId.split('-')[1]
+
+    console.log({"going to ": [entity_type, movie_id]})
+    // console.log(`/watch/${entity_type}/${movie_id}`)
+    this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }
 }

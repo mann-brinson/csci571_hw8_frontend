@@ -68,7 +68,6 @@ export class LocalStorageService {
     return false
   }
 
-
   get isLocalStorageSupported(): boolean {
     return !!this.localStorage
   }

@@ -38,7 +38,8 @@ ngb-carousel .picsum-img-wrapper>img {
             <div class="row">
                 <div class="card">
                     <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
-                        <img id={{movie.id}} [src]="movie.backdrop_path">
+                        <img id={{movie.entity_type}}-{{movie.id}} [src]="movie.backdrop_path">
+                        <!-- <div id={{movie.entity_type}}></div> -->
                         <div class="carousel-caption">
                             <h3>{{ movie.name }}</h3>
                         </div>
@@ -54,7 +55,9 @@ ngb-carousel .picsum-img-wrapper>img {
 <app-multi-item-carousel [movies_list_raw]="movies_popular" [entity_type]="'movie'"></app-multi-item-carousel>
 
 <div *ngIf="lru_not_empty">
-    <h2>Continue Watching</h2><br>
+    <h2>Continue Watching</h2>
+    <!-- <app-multi-item-carousel [movies_list_raw]="movies_top_rated" [entity_type]="'movie'"></app-multi-item-carousel> -->
+    {{ continue_watching | json }}
 </div>
 
 <h2>Top Rated Movies</h2>
