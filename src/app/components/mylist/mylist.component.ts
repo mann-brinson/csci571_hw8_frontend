@@ -2,6 +2,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { LocalStorageService } from 'src/app/components/local-storage/local-storage.service';
+import { MovieTvItem } from 'src/app/components/homepage/movieTvItem';
 
 @Component({
   selector: 'app-mylist',
@@ -15,12 +16,22 @@ export class MylistComponent {
   len_localStorage2: any;
   localStorage_not_empty: boolean = false;
   localStorage_items: any = [];
+
+  lruCache_empty_yn: boolean = true
+  watchlist_empty_yn: boolean = true
+
+  lruCache_json: object = {}
+  // lruCache_json: MovieTvItem[] = [];
+  // watchlist_json: object = {}
+  watchlist_json: MovieTvItem[] = []
   // localStorage = this.localStorageService
 
   constructor(
     private localStorageService: LocalStorageService,
     private route: ActivatedRoute) { }
-    
+
+  // jsonToMovieTvItem()
+ 
   ngOnInit() {
     // console.log(this.localStorageChanges$)
     console.log("trigger")
@@ -35,23 +46,51 @@ export class MylistComponent {
     console.log({"len_localstorage": this.len_localStorage})
     // console.log({"len_localstorage2": this.len_localStorage2})
 
-    if (this.len_localStorage > 0) {
-
+    // if (this.len_localStorage > 0) {
     //   console.log("Watchlist is not empty")
-      this.localStorage_not_empty = true
+    //   this.localStorage_not_empty = true
+    // }
 
-    //   for (var i = 0; i < this.len_localStorage; i++) {
-    //     var record: object = {}
-    //     console.log(localStorage.key(i))
-    //     var key: string = localStorage.key(i)!
-    //     var value = JSON.parse(localStorage.getItem(key)!)
-    //     // record[key] = value
-    //     console.log({key: value})
+    if (this.lru_cache != undefined) {
+      console.log("lru_cache exists")
+      this.lruCache_empty_yn = false
+      this.lruCache_json = JSON.parse(this.lru_cache)
 
-    //     this.localStorage_items.push({key: value})
-    //   }
+      // this.lruCache_json.copyInto(JSON.parse(this.lru_cache))
 
-    //   // console.log(this.localStorage_items)
+      console.log({"lruCache_json": typeof this.lruCache_json})
+    }
+
+    if (this.watchlist != undefined) {
+      this.watchlist_empty_yn = false
+      // this.watchlist_json = JSON.parse(this.watchlist)
+
+      var watchlist_json_v1 = JSON.parse(this.watchlist)
+      
+
+      function adapt(mapper: any, json: any) {
+        let adaptedObj: any = {}
+        const fields: Array<string> = Object.keys(mapper)
+        for (let field of fields) {
+          const targetField: any = mapper[field]
+          adaptedObj[targetField] = json[field]
+        }
+        return adaptedObj
+      }
+
+      function JSONtoMovieTvItemMapper(json: any): MovieTvItem {
+        const mapper = {
+          'id': 'id',
+          'name': 'name',
+          'poster_path': 'poster_path',
+          'entity_type': 'entity_type'
+        }
+        return adapt(mapper, json)
+      }
+      var test = watchlist_json_v1.map((record: any) => JSONtoMovieTvItemMapper(record))
+      this.watchlist_json = test
+      
+      console.log(test)
 
     }
     

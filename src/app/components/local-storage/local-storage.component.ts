@@ -39,7 +39,7 @@ export class LocalStorageComponent {
         console.log({"onchanges": temp_val})
 
         var result = temp_val.filter((record: any) => 
-          record.tmdb_id == this.movie_details.tmdb_id && record.entity_type == this.entity_type)
+          record.id == this.movie_details.tmdb_id && record.entity_type == this.entity_type)
 
         if (result.length == 0) { //RECORD DOES NOT EXIST
           this.current_movie_in_watchlist_yn = "0"
@@ -66,7 +66,7 @@ export class LocalStorageComponent {
     if (watchlist == null) {
     
       console.log("storage is empty")
-      var value = [{"tmdb_id": this.movie_details.tmdb_id,
+      var value = [{"id": this.movie_details.tmdb_id,
                     "name": this.movie_details.name,
                     "entity_type": this.entity_type,
                     "poster_path": this.movie_details.poster_path
@@ -84,13 +84,13 @@ export class LocalStorageComponent {
       // console.log({"val to be searched": temp_val})
 
       var result = temp_val.filter((record: any) => 
-        record.tmdb_id == this.movie_details.tmdb_id && record.entity_type == this.entity_type)
+        record.id == this.movie_details.tmdb_id && record.entity_type == this.entity_type)
 
       // console.log({"result": result.length})
 
       if (result.length == 0) { //RECORD DOES NOT EXIST
         // console.log("storage is not empty")
-        var record = {"tmdb_id": this.movie_details.tmdb_id,
+        var record = {"id": this.movie_details.tmdb_id,
                       "name": this.movie_details.name,
                       "entity_type": this.entity_type,
                       "poster_path": this.movie_details.poster_path
@@ -118,18 +118,15 @@ export class LocalStorageComponent {
       // console.log(this.entity_type)
       console.log({"watchlist": watchlist})
 
-      // var watchlist_prev = JSON.parse(this.localStorageService.localStorage.getItem(key)!)
-      // var watchlist_prev = JSON.parse(watchlist)
       var watchlist_prev = watchlist
       // console.log({"prev": watchlist_prev})
 
       var watchlist_new = watchlist_prev.filter((record: any) => 
-        record.tmdb_id != this.movie_details.tmdb_id || record.entity_type != this.entity_type)
+        record.id != this.movie_details.tmdb_id || record.entity_type != this.entity_type)
       // console.log({"new": watchlist_new.length})
 
       if (watchlist_new.length == 0) {
         // console.log("new watchlist is empty")
-        // this.localStorageService.clear()
         this.localStorageService.remove("watchlist")
         // console.log(this.localStorageService.localStorage)
         
