@@ -51,7 +51,7 @@ export class HomepageComponent implements OnInit {
 
         if ("lru_cache" in this.localStorageService.localStorage) {
           this.lru_not_empty = true
-          this.continue_watching = this.localStorageService.localStorage["lru_cache"]
+          this.continue_watching = JSON.parse(this.localStorageService.localStorage["lru_cache"])
         }
         console.log({"local storage": this.localStorageService.localStorage})
       })  
@@ -61,7 +61,7 @@ export class HomepageComponent implements OnInit {
     let entityType_movieId: string = (event.target as Element).id
     var entity_type = entityType_movieId.split("-")[0]
     var movie_id = entityType_movieId.split("-")[1]
-    
+
     console.log({"going to ": [entity_type, movie_id]})
     this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }

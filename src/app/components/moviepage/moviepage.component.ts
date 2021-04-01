@@ -65,7 +65,7 @@ export class MoviepageComponent {
     ///PARAMETER
     var max_lru_length = 2 
 
-    var item_to_add = {"tmdb_id": this.details.tmdb_id,
+    var item_to_add = {"id": this.details.tmdb_id,
                         "name": this.details.name,
                         "entity_type": this.entity_type,
                         "poster_path": this.details.poster_path
@@ -85,7 +85,7 @@ export class MoviepageComponent {
       var result = []
       for (i = 0; i < lru_cache.length; i++) {
         var record = lru_cache[i]
-        if (record.tmdb_id == this.details.tmdb_id && record.entity_type == this.entity_type) {
+        if (record.id == this.details.tmdb_id && record.entity_type == this.entity_type) {
           idx = i
           result.push(record)
           break
@@ -110,11 +110,11 @@ export class MoviepageComponent {
 
       //// MOVIE NOT IN LRU
       else {
-        // console.log("movie not in lru")
+        console.log("movie not in lru")
 
         //// LRU IS FULL
         if (lru_cache.length == max_lru_length) {
-          // console.log("lru is full")
+          console.log("lru is full")
           var new_val = lru_cache
           new_val.pop()
           new_val.splice(0, 0, item_to_add)
@@ -136,7 +136,7 @@ export class MoviepageComponent {
     //// LRU DOES NOT EXIST
     } else {
       // console.log("lru doesn't exist ")
-      var lru_cache_new = [{"tmdb_id": this.details.tmdb_id,
+      var lru_cache_new = [{"id": this.details.tmdb_id,
                     "name": this.details.name,
                     "entity_type": this.entity_type,
                     "poster_path": this.details.poster_path

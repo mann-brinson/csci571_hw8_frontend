@@ -9,8 +9,7 @@ import { MovieTvItem } from 'src/app/components/homepage/movieTvItem';
 })
 export class MultiItemCarouselComponent {
   // @Input() movies_popular:MovieTvItem[] = [];
-  @Input() movies_list_raw:MovieTvItem[] = [];
-  @Input() entity_type:string = "";
+  @Input() movies_list_raw:MovieTvItem[] = []
 
 
   slides: any = [[]];

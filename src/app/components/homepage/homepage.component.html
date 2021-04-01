@@ -52,25 +52,26 @@ ngb-carousel .picsum-img-wrapper>img {
 </ngb-carousel>
 
 <h2>Popular Movies</h2>
-<app-multi-item-carousel [movies_list_raw]="movies_popular" [entity_type]="'movie'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="movies_popular"></app-multi-item-carousel>
 
 <div *ngIf="lru_not_empty">
     <h2>Continue Watching</h2>
-    <!-- <app-multi-item-carousel [movies_list_raw]="movies_top_rated" [entity_type]="'movie'"></app-multi-item-carousel> -->
+    <app-multi-item-carousel [movies_list_raw]="continue_watching"></app-multi-item-carousel>
     {{ continue_watching | json }}
 </div>
 
 <h2>Top Rated Movies</h2>
-<app-multi-item-carousel [movies_list_raw]="movies_top_rated" [entity_type]="'movie'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="movies_top_rated"></app-multi-item-carousel>
+<div>{{ movies_top_rated | json }}</div>
 
 <h2>Trending Movies</h2>
-<app-multi-item-carousel [movies_list_raw]="movies_trending" [entity_type]="'movie'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="movies_trending"></app-multi-item-carousel>
 
 <h2>Popular TV Shows</h2>
-<app-multi-item-carousel [movies_list_raw]="tv_popular" [entity_type]="'tv'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="tv_popular"></app-multi-item-carousel>
 
 <h2>Top Rated TV Shows</h2>
-<app-multi-item-carousel [movies_list_raw]="tv_top_rated" [entity_type]="'tv'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="tv_top_rated"></app-multi-item-carousel>
 
 <h2>Trending TV Shows</h2>
-<app-multi-item-carousel [movies_list_raw]="tv_trending" [entity_type]="'tv'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="tv_trending"></app-multi-item-carousel>
