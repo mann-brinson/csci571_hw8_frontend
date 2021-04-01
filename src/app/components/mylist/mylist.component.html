@@ -1,5 +1,12 @@
 <h2>Watch List</h2>
 
+<h3>LRU Cache / Continue Watching</h3>
+
 <div *ngIf="localStorage_not_empty">
-    {{ localStorage_items | json }}
+    {{ lru_cache | json }}
+</div>
+
+<h3>Watchlist</h3>
+<div *ngIf="localStorage_not_empty">
+    {{ watchlist | json }}
 </div>

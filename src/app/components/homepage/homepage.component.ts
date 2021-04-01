@@ -22,9 +22,12 @@ export class HomepageComponent implements OnInit {
   public tv_top_rated: MovieTvItem[] = [];
   public tv_trending: MovieTvItem[] = [];
 
+  public lru_not_empty = true;
+
   slides: any = [[]];
 
-  constructor(private homepageService: HomepageService,
+  constructor(
+    private homepageService: HomepageService,
     private router: Router) { }
 
   ngOnInit() {
@@ -42,14 +45,13 @@ export class HomepageComponent implements OnInit {
         this.tv_popular = data.tv[0].popular;
         this.tv_top_rated = data.tv[1].top_rated;
         this.tv_trending = data.tv[2].trending;
-
-
       })  
   }
 
   gotoMoviePage(event: Event) {
-    let movie_id: string = (event.target as Element).id;
-    this.router.navigate([`/watch/movie/${movie_id}`]);
+    let movie_id: string = (event.target as Element).id
+    console.log({"going to ": ["movie", movie_id]})
+    this.router.navigate([`/watch/movie/${movie_id}`])
   }
 
 

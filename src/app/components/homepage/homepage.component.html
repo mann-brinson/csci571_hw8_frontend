@@ -53,6 +53,10 @@ ngb-carousel .picsum-img-wrapper>img {
 <h2>Popular Movies</h2>
 <app-multi-item-carousel [movies_list_raw]="movies_popular" [entity_type]="'movie'"></app-multi-item-carousel>
 
+<div *ngIf="lru_not_empty">
+    <h2>Continue Watching</h2><br>
+</div>
+
 <h2>Top Rated Movies</h2>
 <app-multi-item-carousel [movies_list_raw]="movies_top_rated" [entity_type]="'movie'"></app-multi-item-carousel>
 

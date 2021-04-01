@@ -19,7 +19,7 @@ export class MultiItemCarouselComponent {
   //Must wait until the homepage projects its data into this view
   ngOnChanges() {
     if (this.movies_list_raw.length != 0) {
-      // console.log('movies_popular available');
+      // console.log('trigger');
       // console.log(this.entity_type);
 
       var chunkSize = 6;
@@ -34,8 +34,9 @@ export class MultiItemCarouselComponent {
   gotoMovieTvPage(event: Event) {
     // console.log(event.target);
     let movie_id: string = (event.target as Element).id;
-    console.log(movie_id);
-    console.log(this.entity_type);
+    console.log({"going to ": [this.entity_type, movie_id]})
+    // console.log(movie_id);
+    // console.log(this.entity_type);
     console.log(`/watch/${this.entity_type}/${movie_id}`)
     this.router.navigate([`/watch/${this.entity_type}/${movie_id}`]);
   }
