@@ -51,14 +51,14 @@ ngb-carousel .picsum-img-wrapper>img {
     </ng-template>
 </ngb-carousel>
 
-<h2>Popular Movies</h2>
-<app-multi-item-carousel [movies_list_raw]="movies_popular"></app-multi-item-carousel>
-
 <div *ngIf="lru_not_empty">
     <h2>Continue Watching</h2>
     <app-multi-item-carousel [movies_list_raw]="continue_watching"></app-multi-item-carousel>
     {{ continue_watching | json }}
 </div>
+
+<h2>Popular Movies</h2>
+<app-multi-item-carousel [movies_list_raw]="movies_popular"></app-multi-item-carousel>
 
 <h2>Top Rated Movies</h2>
 <app-multi-item-carousel [movies_list_raw]="movies_top_rated"></app-multi-item-carousel>

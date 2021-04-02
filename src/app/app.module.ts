@@ -27,6 +27,7 @@ import { YoutubeModule } from './components/youtube/youtube.module';
 import { LocalStorageComponent } from './components/local-storage/local-storage.component';
 import { LocalStorageService } from './components/local-storage/local-storage.service';
 import { ContinueWatchLruComponent } from './components/continue-watch-lru/continue-watch-lru.component';
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ContinueWatchLruComponent } from './components/continue-watch-lru/conti
     MultiItemCarouselComponent,
     TypeaheadComponent,
     LocalStorageComponent,
-    ContinueWatchLruComponent
+    ContinueWatchLruComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,

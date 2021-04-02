@@ -7,9 +7,25 @@
 <!-- <app-youtube></app-youtube> -->
 <app-youtube [video_data]="preview_video"></app-youtube>
 
+<!-- <h2>Details</h2> -->
+<app-movie-detail [movie_detail]="details"></app-movie-detail>
+
 <h2>Local Storage Button</h2>
 <app-local-storage [movie_details]="details"
                    [entity_type]="entity_type"></app-local-storage>
+
+<h2>Overview</h2>
+<div>{{ details.overview | json }}</div>
+
+<h2>Share</h2>
+<div>Component for sharing TMDB link on FB and Twitter go here.</div>
+<a href={{tmdb_page}}>{{ tmdb_page }}</a>
+
+<h2>Full Cast & Crew</h2>
+<div>{{ credits | json}}</div>
+
+<h2>Reviews</h2>
+<div>{{ reviews | json }}</div>
 
 <div *ngIf="!similar_empty_yn">
     <h2>Similar {{entity_type}}</h2>
@@ -21,5 +37,5 @@
     <app-multi-item-carousel [movies_list_raw]="recommended"></app-multi-item-carousel>
 </div>
 
-<h2>Movie Contents</h2>
-<div>{{holder | json}}</div>
+<!-- <h2>Movie Contents</h2>
+<div>{{holder | json}}</div> -->

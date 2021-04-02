@@ -13,9 +13,13 @@ import { MovieTvItem } from '../homepage/movieTvItem';
 export class MoviepageComponent {
 
   holder = {};
-  public preview_video: any = {};
-  public details: any = {};
+  public preview_video: any = {}
+  public details: any = {}
+  public credits: any = []
+  public reviews: any = []
   public entity_type: string = ""
+
+  public tmdb_page: string = ""
 
   public similar_empty_yn = true
   public recommended_empty_yn = true
@@ -52,7 +56,13 @@ export class MoviepageComponent {
 
         this.holder = data;
         this.preview_video = data.video;
-        this.details = data.detail;
+        this.details = data.detail
+        this.credits = data.credits
+        this.reviews = data.reviews
+
+        this.tmdb_page = `https://www.themoviedb.org/${this.entity_type}/${this.details.tmdb_id}`
+
+        console.log({"details": this.details.name})
 
         this.similar = data.similar
         this.recommended = data.recommended
