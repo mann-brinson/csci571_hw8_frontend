@@ -3,8 +3,7 @@ import { MoviepageService } from './moviepage.service';
 import { ActivatedRoute } from "@angular/router";
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { MovieTvItem } from '../homepage/movieTvItem';
-import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookSquare, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-moviepage',
@@ -25,6 +24,7 @@ export class MoviepageComponent {
   public fb_share_page: string = ""
   public fb_square = faFacebookSquare
   public twitter_share_page: string = ""
+  public twitter_square = faTwitter
 
   public similar_empty_yn = true
   public recommended_empty_yn = true
@@ -67,6 +67,9 @@ export class MoviepageComponent {
 
         this.youtube_page = encodeURIComponent(`https://www.youtube.com/watch?v=${this.preview_video.key}`)
         this.fb_share_page = `https://www.facebook.com/sharer/sharer.php?u=${this.youtube_page}`
+
+        console.log({"name": encodeURI(this.details.name)})
+        this.twitter_share_page = `https://twitter.com/intent/tweet?text=Watch%20${encodeURI(this.details.name)}%20${this.youtube_page}&hashtags=USC,CSCI571,FightOn`
 
 
         console.log({"encoded_youtube": encodeURIComponent(this.youtube_page)})
