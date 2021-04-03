@@ -38,7 +38,8 @@ ngb-carousel .picsum-img-wrapper>img {
             <div class="row">
                 <div class="card">
                     <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
-                        <img id={{movie.id}} [src]="movie.backdrop_path">
+                        <img id={{movie.entity_type}}-{{movie.id}} [src]="movie.backdrop_path">
+                        <!-- <div id={{movie.entity_type}}></div> -->
                         <div class="carousel-caption">
                             <h3>{{ movie.name }}</h3>
                         </div>
@@ -50,20 +51,26 @@ ngb-carousel .picsum-img-wrapper>img {
     </ng-template>
 </ngb-carousel>
 
+<div *ngIf="lru_not_empty">
+    <h2>Continue Watching</h2>
+    <app-multi-item-carousel [movies_list_raw]="continue_watching"></app-multi-item-carousel>
+    {{ continue_watching | json }}
+</div>
+
 <h2>Popular Movies</h2>
-<app-multi-item-carousel [movies_list_raw]="movies_popular" [entity_type]="'movie'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="movies_popular"></app-multi-item-carousel>
 
 <h2>Top Rated Movies</h2>
-<app-multi-item-carousel [movies_list_raw]="movies_top_rated" [entity_type]="'movie'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="movies_top_rated"></app-multi-item-carousel>
 
 <h2>Trending Movies</h2>
-<app-multi-item-carousel [movies_list_raw]="movies_trending" [entity_type]="'movie'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="movies_trending"></app-multi-item-carousel>
 
 <h2>Popular TV Shows</h2>
-<app-multi-item-carousel [movies_list_raw]="tv_popular" [entity_type]="'tv'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="tv_popular"></app-multi-item-carousel>
 
 <h2>Top Rated TV Shows</h2>
-<app-multi-item-carousel [movies_list_raw]="tv_top_rated" [entity_type]="'tv'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="tv_top_rated"></app-multi-item-carousel>
 
 <h2>Trending TV Shows</h2>
-<app-multi-item-carousel [movies_list_raw]="tv_trending" [entity_type]="'tv'"></app-multi-item-carousel>
+<app-multi-item-carousel [movies_list_raw]="tv_trending"></app-multi-item-carousel>

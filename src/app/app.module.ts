@@ -16,15 +16,19 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { MoviepageService } from './components/moviepage/moviepage.service';
 import { MoviepageComponent } from './components/moviepage/moviepage.component';
 
-import { TvpageService } from './components/tvpage/tvpage.service';
-import { TvpageComponent } from './components/tvpage/tvpage.component';
-
 import { MylistComponent } from './components/mylist/mylist.component';
 import { MultiItemCarouselComponent } from './components/multi-item-carousel/multi-item-carousel.component';
+import { TypeaheadComponent } from './components/typeahead/typeahead.component';
+import { FormsModule } from '@angular/forms';
+import { YoutubeComponent } from './components/youtube/youtube.component';
 
-// import { MDBBootstrapModulesPro, MDBSpinningPreloader } from 'ng-uikit-pro-standard';
+import { YoutubeModule } from './components/youtube/youtube.module';
 
-// import { NgbdCarouselModule } from './components/bootstrap/carousel/carousel.module';
+import { LocalStorageComponent } from './components/local-storage/local-storage.component';
+import { LocalStorageService } from './components/local-storage/local-storage.service';
+import { ContinueWatchLruComponent } from './components/continue-watch-lru/continue-watch-lru.component';
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -35,16 +39,22 @@ import { MultiItemCarouselComponent } from './components/multi-item-carousel/mul
     FirstChildComponent,
     MylistComponent,
     MoviepageComponent,
-    TvpageComponent,
     MultiItemCarouselComponent,
+    TypeaheadComponent,
+    LocalStorageComponent,
+    ContinueWatchLruComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    YoutubeModule,
+    FontAwesomeModule
   ],
-  providers: [HomepageService, MoviepageService, TvpageService],
+  providers: [HomepageService, MoviepageService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,37 @@
+<!-- MOVIE APP -->
+
+<!-- VERSION 1 -->
+<!-- <h2>Search VERSION 1</h2>
+<ng-template #rt let-r="result" let-t="term">
+  <img [src]="r['backdrop_path']" class="mr-1" style="width: 16px">
+  <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
+
+<label for="typeahead-template">Search for a movie or tv show</label>
+<input id="typeahead-template" type="text" 
+  class="form-control" 
+  [(ngModel)]="model" 
+  [ngbTypeahead]="search" 
+  [resultTemplate]="rt"
+  [inputFormatter]="formatter" />
+<hr>
+<pre>Model: {{ model | json }}</pre> -->
+
+<!-- VERSION 2 -->
+<h2>Search VERSION 2</h2>
+<ng-template #rt let-r="result" let-t="term">
+  <img [src]="r['backdrop_path']" class="mr-1" style="width: 16px">
+  <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
+
+<label for="typeahead-template">Search for a movie or tv show</label>
+<input id="typeahead-template" type="text" 
+  class="form-control" 
+  [(ngModel)]="model" 
+  [ngbTypeahead]="search" 
+  [resultTemplate]="rt"
+  [inputFormatter]="formatter" 
+  (selectItem)="selectedItem($event)"
+  />
+<hr>
+<pre>Model: {{ model | json }}</pre>

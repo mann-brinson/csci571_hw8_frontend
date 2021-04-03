@@ -1,9 +1,60 @@
-<h1>moviepage works!</h1>
-<!-- <app-commonpage [dataReceived]="message"></app-commonpage> -->
-<app-commonpage [test]="test"></app-commonpage>
+<!-- IMPORTS -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=446073933115618&autoLogAppEvents=1" nonce="fVr0K0Vo"></script>
 
-<h2>Movie Contents</h2>
-<div>{{holder | json}}</div>
+<h1>Movie/TV Header</h1>
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <app-youtube [video_data]="preview_video"></app-youtube>
+      </div>
+      <div class="col-sm">
+        <app-movie-detail [movie_detail]="details"></app-movie-detail>
+      </div>
+    </div>
+  </div>
 
-<!-- <app-commonpage></app-commonpage> -->
-<!-- <app-commonpage></app-commonpage> -->
+<!-- <h2>Youtube Player & Details</h2>
+<app-youtube [video_data]="preview_video"></app-youtube>
+<app-movie-detail [movie_detail]="details"></app-movie-detail> -->
+
+<h2>Local Storage Button</h2>
+<app-local-storage [movie_details]="details"
+                   [entity_type]="entity_type"></app-local-storage>
+
+<h2>Overview</h2>
+<div>{{ details.overview }}</div>
+
+<h2>Share</h2>
+<!-- TWITTER SHARE -->
+<span style="font-size: 40px; color: rgb(29, 162, 239)">
+    <a href={{twitter_share_page}}>
+        <fa-icon [icon]="twitter_square"></fa-icon>
+    </a>
+</span>
+
+<!-- FACEBOOK SHARE -->
+<span style="font-size: 40px; color: rgb(4, 63, 190)">
+    <a href={{fb_share_page}}>
+        <fa-icon [icon]="fb_square"></fa-icon>
+    </a>
+</span>
+
+<h2>Full Cast & Crew</h2>
+<div>{{ credits | json}}</div>
+
+<h2>Reviews</h2>
+<div>{{ reviews | json }}</div>
+
+<div *ngIf="!similar_empty_yn">
+    <h2>Similar {{entity_type}}</h2>
+    <app-multi-item-carousel [movies_list_raw]="similar"></app-multi-item-carousel>
+</div>
+
+<div *ngIf="!recommended_empty_yn">
+    <h2>Recommended {{entity_type}}</h2>
+    <app-multi-item-carousel [movies_list_raw]="recommended"></app-multi-item-carousel>
+</div>
+
+<!-- <h2>Movie Contents</h2>
+<div>{{holder | json}}</div> -->

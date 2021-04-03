@@ -1,1 +1,15 @@
-<p>mylist works!</p>
+<h2>Watch List</h2>
+<div *ngIf="!watchlist_empty_yn">
+    <app-multi-item-carousel [movies_list_raw]="watchlist_json"></app-multi-item-carousel>
+</div>
+
+<h2>TESTING</h2>
+<h3>LRU Cache / Continue Watching</h3>
+<div *ngIf="!lruCache_empty_yn">
+    {{ lruCache_json | json }}
+</div>
+
+<h3>Watchlist</h3>
+<div *ngIf="!watchlist_empty_yn">
+    {{ watchlist_json | json }}
+</div>

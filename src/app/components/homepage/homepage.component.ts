@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 import { HomepageService } from './homepage.service';
 
 import { MovieItem } from './movieItem';
@@ -22,10 +23,15 @@ export class HomepageComponent implements OnInit {
   public tv_top_rated: MovieTvItem[] = [];
   public tv_trending: MovieTvItem[] = [];
 
+  public lru_not_empty = false
+  public continue_watching: MovieTvItem[] = []
+
   slides: any = [[]];
 
-  constructor(private homepageService: HomepageService,
-    private router: Router) { }
+  constructor(
+    private homepageService: HomepageService,
+    private router: Router,
+    private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.homepageService.getHomepage()
@@ -43,13 +49,21 @@ export class HomepageComponent implements OnInit {
         this.tv_top_rated = data.tv[1].top_rated;
         this.tv_trending = data.tv[2].trending;
 
-
+        if ("lru_cache" in this.localStorageService.localStorage) {
+          this.lru_not_empty = true
+          this.continue_watching = JSON.parse(this.localStorageService.localStorage["lru_cache"])
+        }
+        console.log({"local storage": this.localStorageService.localStorage})
       })  
   }
 
   gotoMoviePage(event: Event) {
-    let movie_id: string = (event.target as Element).id;
-    this.router.navigate([`/watch/movie/${movie_id}`]);
+    let entityType_movieId: string = (event.target as Element).id
+    var entity_type = entityType_movieId.split("-")[0]
+    var movie_id = entityType_movieId.split("-")[1]
+
+    console.log({"going to ": [entity_type, movie_id]})
+    this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }
 
 

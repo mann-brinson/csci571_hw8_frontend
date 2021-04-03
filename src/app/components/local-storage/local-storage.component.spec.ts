@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TvpageComponent } from './tvpage.component';
+import { LocalStorageComponent } from './local-storage.component';
 
-describe('TvpageComponent', () => {
-  let component: TvpageComponent;
-  let fixture: ComponentFixture<TvpageComponent>;
+describe('LocalStorageComponent', () => {
+  let component: LocalStorageComponent;
+  let fixture: ComponentFixture<LocalStorageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TvpageComponent ]
+      declarations: [ LocalStorageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TvpageComponent);
+    fixture = TestBed.createComponent(LocalStorageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
