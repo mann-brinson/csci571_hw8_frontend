@@ -1,14 +1,22 @@
+<!-- IMPORTS -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=446073933115618&autoLogAppEvents=1" nonce="fVr0K0Vo"></script>
+
 <h1>Movie/TV Header</h1>
-<!-- <app-commonpage [dataReceived]="message"></app-commonpage> -->
-<!-- <app-commonpage [test]="test"></app-commonpage> -->
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <app-youtube [video_data]="preview_video"></app-youtube>
+      </div>
+      <div class="col-sm">
+        <app-movie-detail [movie_detail]="details"></app-movie-detail>
+      </div>
+    </div>
+  </div>
 
-<h2>Youtube Player</h2>
-<!-- <div>{{preview_video | json}}</div> -->
-<!-- <app-youtube></app-youtube> -->
+<!-- <h2>Youtube Player & Details</h2>
 <app-youtube [video_data]="preview_video"></app-youtube>
-
-<!-- <h2>Details</h2> -->
-<app-movie-detail [movie_detail]="details"></app-movie-detail>
+<app-movie-detail [movie_detail]="details"></app-movie-detail> -->
 
 <h2>Local Storage Button</h2>
 <app-local-storage [movie_details]="details"
@@ -19,7 +27,14 @@
 
 <h2>Share</h2>
 <div>Component for sharing TMDB link on FB and Twitter go here.</div>
-<a href={{tmdb_page}}>{{ tmdb_page }}</a>
+<!-- <a href={{youtube_page}}>{{ youtube_page }}</a> -->
+
+<!-- FACEBOOK SHARE -->
+<span style="font-size: 40px; color: rgb(4, 63, 190)">
+    <a href={{fb_share_page}}>
+        <fa-icon [icon]="fb_square"></fa-icon>
+    </a>
+</span>
 
 <h2>Full Cast & Crew</h2>
 <div>{{ credits | json}}</div>

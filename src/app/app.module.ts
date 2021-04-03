@@ -28,6 +28,7 @@ import { LocalStorageComponent } from './components/local-storage/local-storage.
 import { LocalStorageService } from './components/local-storage/local-storage.service';
 import { ContinueWatchLruComponent } from './components/continue-watch-lru/continue-watch-lru.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    YoutubeModule
+    YoutubeModule,
+    FontAwesomeModule
   ],
   providers: [HomepageService, MoviepageService, LocalStorageService],
   bootstrap: [AppComponent]

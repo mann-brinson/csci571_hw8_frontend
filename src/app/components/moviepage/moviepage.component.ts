@@ -3,6 +3,8 @@ import { MoviepageService } from './moviepage.service';
 import { ActivatedRoute } from "@angular/router";
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { MovieTvItem } from '../homepage/movieTvItem';
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-moviepage',
@@ -19,7 +21,10 @@ export class MoviepageComponent {
   public reviews: any = []
   public entity_type: string = ""
 
-  public tmdb_page: string = ""
+  public youtube_page: string = ""
+  public fb_share_page: string = ""
+  public fb_square = faFacebookSquare
+  public twitter_share_page: string = ""
 
   public similar_empty_yn = true
   public recommended_empty_yn = true
@@ -60,7 +65,12 @@ export class MoviepageComponent {
         this.credits = data.credits
         this.reviews = data.reviews
 
-        this.tmdb_page = `https://www.themoviedb.org/${this.entity_type}/${this.details.tmdb_id}`
+        this.youtube_page = encodeURIComponent(`https://www.youtube.com/watch?v=${this.preview_video.key}`)
+        this.fb_share_page = `https://www.facebook.com/sharer/sharer.php?u=${this.youtube_page}`
+
+
+        console.log({"encoded_youtube": encodeURIComponent(this.youtube_page)})
+        console.log({"fb_share": this.fb_share_page})
 
         console.log({"details": this.details.name})
 
