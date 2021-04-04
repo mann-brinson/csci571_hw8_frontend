@@ -31,18 +31,8 @@ export class CastListComponent {
     let person_id: string = (event.target as Element).id
     console.log({"person_id": person_id})
 
-    this.castItemComponent.open()
-
-    //On click, get the cast modal endpoint, and store result on this instance
-    // this.castItemFullService.getCastItemFull(person_id)
-    //   .subscribe((data) => {
-    //     this.cast_modal_obj = data
-
-    //     console.log({"cast_modal_obj": this.cast_modal_obj})
-
-
-    // })
-
+    //Get the person_id details, then pass and render inside a pop-up modal
+    this.castItemComponent.open(person_id)
 
   }
 
