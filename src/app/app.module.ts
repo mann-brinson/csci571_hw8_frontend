@@ -29,6 +29,9 @@ import { LocalStorageService } from './components/local-storage/local-storage.se
 import { ContinueWatchLruComponent } from './components/continue-watch-lru/continue-watch-lru.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CastListComponent } from './components/cast-list/cast-list.component';
+import { CastItemFullService } from './components/cast-modal/castItem.service';
+import { CastModalComponent } from './components/cast-modal/cast-modal.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TypeaheadComponent,
     LocalStorageComponent,
     ContinueWatchLruComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    CastListComponent,
+    CastModalComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     YoutubeModule,
     FontAwesomeModule
   ],
-  providers: [HomepageService, MoviepageService, LocalStorageService],
+  providers: [
+    HomepageService, 
+    MoviepageService, 
+    LocalStorageService,
+    CastItemFullService,
+    CastModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

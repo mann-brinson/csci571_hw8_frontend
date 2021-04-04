@@ -57,7 +57,7 @@ export class MoviepageComponent {
       this.moviepageService.getMoviepage(routeParams.tmdb_id!, this.entity_type)
       .subscribe((data) => {
         // console.log({"current type": window.location.pathname.split("/")[2]});
-        console.log("made it here")
+        // console.log("made it here")
 
         this.holder = data;
         this.preview_video = data.video;
@@ -68,14 +68,14 @@ export class MoviepageComponent {
         this.youtube_page = encodeURIComponent(`https://www.youtube.com/watch?v=${this.preview_video.key}`)
         this.fb_share_page = `https://www.facebook.com/sharer/sharer.php?u=${this.youtube_page}`
 
-        console.log({"name": encodeURI(this.details.name)})
+        // console.log({"name": encodeURI(this.details.name)})
         this.twitter_share_page = `https://twitter.com/intent/tweet?text=Watch%20${encodeURI(this.details.name)}%20${this.youtube_page}&hashtags=USC,CSCI571,FightOn`
 
 
-        console.log({"encoded_youtube": encodeURIComponent(this.youtube_page)})
-        console.log({"fb_share": this.fb_share_page})
+        // console.log({"encoded_youtube": encodeURIComponent(this.youtube_page)})
+        // console.log({"fb_share": this.fb_share_page})
 
-        console.log({"details": this.details.name})
+        // console.log({"details": this.details.name})
 
         this.similar = data.similar
         this.recommended = data.recommended
@@ -89,7 +89,7 @@ export class MoviepageComponent {
           this.recommended_empty_yn = false
         }
 
-        console.log({"data": this.similar})
+        // console.log({"data": this.similar})
         // console.log({"localstorage": this.localStorageService.localStorage})
 
         //// ADD TO LRU_CACHE HERE
@@ -132,7 +132,7 @@ export class MoviepageComponent {
           break
         }
       }
-      console.log({"lru_cache after": result})
+      // console.log({"lru_cache after": result})
 
       //// MOVIE IN LRU
       if (result.length > 0) {
@@ -145,17 +145,17 @@ export class MoviepageComponent {
         var new_val = lru_cache
         new_val.splice(idx, 1)
         new_val.splice(0, 0, result[0])
-        console.log({"lru_cache_new": new_val})
+        // console.log({"lru_cache_new": new_val})
         this.localStorageService.set("lru_cache", new_val)
       } 
 
       //// MOVIE NOT IN LRU
       else {
-        console.log("movie not in lru")
+        // console.log("movie not in lru")
 
         //// LRU IS FULL
         if (lru_cache.length == max_lru_length) {
-          console.log("lru is full")
+          // console.log("lru is full")
           var new_val = lru_cache
           new_val.pop()
           new_val.splice(0, 0, item_to_add)

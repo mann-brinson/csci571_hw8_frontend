@@ -19,8 +19,8 @@ export class MultiItemCarouselComponent {
   //Must wait until the homepage projects its data into this view
   ngOnChanges() {
     if (this.movies_list_raw.length != 0) {
-      // console.log('trigger');
-      // console.log(this.entity_type);
+      console.log('trigger')
+      console.log({"movie_list_raw": this.movies_list_raw})
 
       var chunkSize = 6;
       let R = [];

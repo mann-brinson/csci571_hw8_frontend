@@ -41,7 +41,8 @@
 </span>
 
 <h2>Full Cast & Crew</h2>
-<div>{{ credits | json}}</div>
+<app-cast-list [cast_list]="credits"></app-cast-list>
+<!-- <div>{{ credits | json}}</div> -->
 
 <h2>Reviews</h2>
 <div>{{ reviews | json }}</div>
