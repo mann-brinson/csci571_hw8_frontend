@@ -1,10 +1,31 @@
+<!-- HEADER -->
 <div class="modal-header">
-    <h4 class="modal-title">Hi there!</h4>
+    <h4 class="modal-title">{{ name }}</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
 </div>
+
+<!-- BODY -->
 <div class="modal-body">
-    <p>Hello, {{name}}!</p>
-    <div>{{ cast_item_modal.person }}</div>
+    <!-- DETAILS -->
+    <div class="container">
+        <!-- PROFILE PIC -->
+        <div class="col-sm">
+            <img src={{profile_path}} style="max-width: 200px;">
+        </div>
+
+        <div class="col-sm">
+            <!-- DEMOGRAPHICS -->
+            <!-- EXTERNAL IDS -->
+        </div>
+
+    </div>
+    
+    <!-- BIO -->
+    <h2>Biography</h2>
+    <div>bio goes here</div>
+
+    <h2>TESTING</h2>
+    <div>{{ cast_item_modal }}</div>
 </div>

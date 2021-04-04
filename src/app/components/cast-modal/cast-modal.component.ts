@@ -10,8 +10,6 @@ import { CastItemFull } from 'src/app/components/cast-list/castItem';
   styleUrls: ['./cast-modal.component.css']
 })
 export class CastModalContent {
-  @Input() name: string = ""
-  // @Input() cast_item_modal: object = {}
   @Input() cast_item_modal: CastItemFull = {
     person: {
       gender: "",
@@ -22,8 +20,13 @@ export class CastModalContent {
       known_for: "",
       biography: "",
       externalIds: []
+    }
   }
-}
+
+  @Input() name: string = ""
+  @Input() profile_path: string = ""
+
+  // gender: string = ""
 
   constructor(
     public activeModal: NgbActiveModal
@@ -53,10 +56,18 @@ export class CastModalComponent {
       .subscribe((data) => {
 
         //Pass the castItemFull to the modal
-        console.log("asdf")
-        modalRef.componentInstance.name = 'World'
-        modalRef.componentInstance.cast_item_modal = data
+        
+        modalRef.componentInstance.cast_item_modal = JSON.stringify(data)
         console.log({"data in modal": modalRef.componentInstance.cast_item_modal})
+
+        var castItem = JSON.stringify(data)
+        var castItem_person_json = JSON.parse(castItem).person
+        
+        // console.log({"name test": JSON.parse(castItem).person.name}) //Works
+        //Assign individual attributes
+        modalRef.componentInstance.name = castItem_person_json.name
+        modalRef.componentInstance.profile_path = castItem_person_json.profile_path
+
       })
 
     
