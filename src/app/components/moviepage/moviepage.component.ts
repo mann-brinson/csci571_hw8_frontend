@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { MovieTvItem } from '../homepage/movieTvItem';
 import { faFacebookSquare, faTwitter } from '@fortawesome/free-brands-svg-icons';
+// import { MovieDetail } from '../movie-detail/movieDetail';
 
 @Component({
   selector: 'app-moviepage',

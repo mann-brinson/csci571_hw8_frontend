@@ -9,7 +9,7 @@
       <app-youtube [video_data]="preview_video"></app-youtube>
     </div>
     <div class="col-sm">
-      <app-movie-detail [movie_detail]="details"></app-movie-detail>
+      <app-movie-detail [movie_detail]="details" [entity_type]="entity_type"></app-movie-detail>
     </div>
   </div>
 </div>
@@ -22,8 +22,11 @@
 <app-local-storage [movie_details]="details"
                    [entity_type]="entity_type"></app-local-storage>
 
-<h2>Overview</h2>
-<div>{{ details.overview }}</div>
+<div *ngIf="details.overview">
+  <h2>Description</h2>
+  <div>{{ details.overview }}</div>
+</div>
+
 
 <h2>Share</h2>
 <!-- TWITTER SHARE -->

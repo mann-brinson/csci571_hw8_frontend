@@ -1,8 +1,13 @@
 /* MODAL */
-.modal-dialog {
+/* :host ::ng-deep .modal-dialog {
     width: 60%;
     height: 80%;
-}
+    margin: 20px;
+} */
+
+/* .modal-content {
+    width: 1000px;
+} */
 
 /* EXTERNAL IDS */
 :host ::ng-deep .cast-detail {

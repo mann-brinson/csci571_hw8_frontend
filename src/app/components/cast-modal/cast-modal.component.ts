@@ -60,7 +60,7 @@ export class CastModalComponent {
         var castItem_eIds_json = JSON.parse(castItem).externalIds
 
         //Initialize a modal object 
-        const modalRef = this.modalService.open(CastModalContent)
+        const modalRef = this.modalService.open(CastModalContent, {'size': 'lg'})
 
         modalRef.componentInstance.cast_item_modal = JSON.stringify(data)
         console.log({"data in modal": modalRef.componentInstance.cast_item_modal})

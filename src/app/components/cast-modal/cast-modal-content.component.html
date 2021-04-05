@@ -1,67 +1,68 @@
-<!-- HEADER -->
-<div class="modal-header">
-    <h4 class="modal-title">{{ name }}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+<!-- <ng-template #person_id let-modal> -->
+<div style="max-width: 1000px">
+    <!-- HEADER -->
+    <div class="modal-header-md">
+        <h4 class="modal-title">{{ name }}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
-<!-- BODY -->
-<div class="modal-body">
-    <!-- DETAILS -->
-    <div class="container">
-        <div class="row">
-            <!-- COL 1: PROFILE PIC -->
-            <div class="col-sm">
-                <img src={{profile_path}} style="max-width: 200px;">
+    <!-- BODY -->
+    <div class="modal-body-md">
+        <!-- DETAILS -->
+        <div class="container">
+            <div class="row">
+                <!-- COL 1: PROFILE PIC -->
+                <div class="col-md-6">
+                    <img src={{profile_path}} style="max-width: 200px;">
+                </div>
+
+                <!-- COL 2: DETAILS -->
+                <div class="col-md-6" style="margin: 0px">
+                    <!-- DEMOGRAPHICS -->
+                    <p class="cast-detail" *ngIf="birthdate">Birth: {{birthdate}}</p>
+                    <p class="cast-detail" *ngIf="birthplace">Birth Place: {{birthplace}}</p>
+                    <p class="cast-detail" *ngIf="gender">Gender: {{gender}}</p>
+                    <p class="cast-detail" *ngIf="known_for">Known for: {{known_for}}</p>
+                    <p class="cast-detail" *ngIf="also_known_as">Also Known as: {{also_known_as}}</p>
+
+                    <!-- EXTERNAL IDS -->
+                    <span class="icon" *ngIf="imdb_page" style="font-size: 40px">
+                        <a href={{imdb_page}}>
+                            <fa-icon class="imdb-square" [icon]="imdb_square"></fa-icon>
+                        </a>
+                    </span>
+
+                    <span class="icon" *ngIf="insta_page" style="font-size: 40px">
+                        <a href={{insta_page}}>
+                            <fa-icon class="insta-square" [icon]="insta_square"></fa-icon>
+                        </a>
+                    </span>
+
+                    <span class="icon" *ngIf="fb_page" style="font-size: 40px">
+                        <a href={{fb_page}}>
+                            <fa-icon class="fb-square" [icon]="fb_square"></fa-icon>
+                        </a>
+                    </span>
+
+                    <span class="icon" *ngIf="twitter_page" style="font-size: 40px">
+                        <a href={{twitter_page}}>
+                            <fa-icon class="twitter-square" [icon]="twitter_square"></fa-icon>
+                        </a>
+                    </span>
+
+                </div>
+
             </div>
-
-            <!-- COL 2: DETAILS -->
-            <div class="col-6" style="margin: 0px">
-                <!-- DEMOGRAPHICS -->
-                <p class="cast-detail" *ngIf="birthdate">Birth: {{birthdate}}</p>
-                <p class="cast-detail" *ngIf="birthplace">Birth Place: {{birthplace}}</p>
-                <p class="cast-detail" *ngIf="gender">Gender: {{gender}}</p>
-                <p class="cast-detail" *ngIf="known_for">Known for: {{known_for}}</p>
-                <p class="cast-detail" *ngIf="also_known_as">Also Known as: {{also_known_as}}</p>
-
-                <!-- EXTERNAL IDS -->
-                <span class="icon" *ngIf="imdb_page" style="font-size: 40px">
-                    <a href={{imdb_page}}>
-                        <fa-icon class="imdb-square" [icon]="imdb_square"></fa-icon>
-                    </a>
-                </span>
-
-                <span class="icon" *ngIf="insta_page" style="font-size: 40px">
-                    <a href={{insta_page}}>
-                        <fa-icon class="insta-square" [icon]="insta_square"></fa-icon>
-                    </a>
-                </span>
-
-                <span class="icon" *ngIf="fb_page" style="font-size: 40px">
-                    <a href={{fb_page}}>
-                        <fa-icon class="fb-square" [icon]="fb_square"></fa-icon>
-                    </a>
-                </span>
-
-                <span class="icon" *ngIf="twitter_page" style="font-size: 40px">
-                    <a href={{twitter_page}}>
-                        <fa-icon class="twitter-square" [icon]="twitter_square"></fa-icon>
-                    </a>
-                </span>
-
-            </div>
-
+            
         </div>
         
+        <!-- BIO -->
+        <div *ngIf="biography">
+            <h2>Biography</h2>
+            <div>{{biography}}</div>
+        </div>
     </div>
-    
-    <!-- BIO -->
-    <div *ngIf="biography">
-        <h2>Biography</h2>
-        <div>{{biography}}</div>
-    </div>
-    
-    <!-- <h2>TESTING</h2> -->
-    <!-- <div>{{ cast_item_modal }}</div> -->
 </div>
+<!-- </ng-template> -->
