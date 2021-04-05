@@ -1,5 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { SelectControlValueAccessor } from '@angular/forms';
 import { LocalStorageService } from './local-storage.service';
+
+interface Alert {
+  type: string;
+  message: string;
+}
+
+// const ALERTS: Alert[] = [{
+//     type: 'success',
+//     message: 'Added to Watchlist.',
+//   }, {
+//     type: 'info',
+//     message: 'Removed from Watchlist.',
+//   }
+// ]
+
+const ALERTS: Alert[] = []
 
 @Component({
   selector: 'app-local-storage',
@@ -10,6 +27,37 @@ export class LocalStorageComponent {
 
   @Input() movie_details: any = {}
   @Input() entity_type: string = ""
+
+  // @ViewChild('alert', { static: true })
+  @ViewChild('addAlert', {static: false}) addAlert: any; 
+  @ViewChild('removeAlert', {static: false}) removeAlert: any; 
+
+  public alerts: Alert[] = []
+  public alerts_empty_yn: boolean = true
+
+  closeAlert(event: Event) {
+    var alert_id = (event.target as Element).id
+    console.log({"alert_id": alert_id})
+    // console.log({"Current Add Item": this.addAlert.nativeElement.classList[0]})
+    // console.log({"Current Remove Item": this.removeAlert.nativeElement.classList[0]})
+    var current_alert_is_add_yn = false
+    var current_alert_is_remove_yn = false
+
+    if (alert_id = "add_item") {
+      this.addAlert.nativeElement.classList.remove('show')
+      
+    } 
+    if (alert_id = "remove_item") {
+      this.removeAlert.nativeElement.classList.remove('show')
+    }
+
+    this.alerts_empty_yn = true
+  }
+
+  close(alert: Alert) {
+    console.log("close alert")
+    this.alerts.splice(this.alerts.indexOf(alert), 1)
+  }
 
   current_movie_in_watchlist_yn: string = "0"
   current_movie_key: string = ""
@@ -141,8 +189,19 @@ export class LocalStorageComponent {
   finalButton() {
     if (this.button_text == "Remove from Watchlist") {
       this.removeMoviev2()
+      // this.removeAlert.nativeElement.classList.add("show")
+
+      var alert_to_send: Alert = {type: 'secondary', message: 'Removed from Watchlist.'}
+      this.alerts.push(alert_to_send)
+      this.alerts_empty_yn = false
+
     } else if (this.button_text == "Add to Watchlist") {
       this.putMoviev2()
+      // this.addAlert.nativeElement.classList.add('show');
+
+      var alert_to_send: Alert = {type: 'success', message: 'Added to Watchlist.'}
+      this.alerts.push(alert_to_send)
+      this.alerts_empty_yn = false
     }
   }
 

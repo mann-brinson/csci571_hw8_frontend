@@ -34,6 +34,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CastListComponent } from './components/cast-list/cast-list.component';
 import { CastItemFullService } from './components/cast-modal/castItem.service';
 import { CastModalComponent, CastModalContent } from './components/cast-modal/cast-modal.component';
+import { MovieReviewsComponent } from './components/movie-reviews/movie-reviews.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { CastModalComponent, CastModalContent } from './components/cast-modal/ca
     MovieDetailComponent,
     CastListComponent,
     CastModalComponent,
-    CastModalContent
+    CastModalContent,
+    MovieReviewsComponent
   ],
   imports: [
     BrowserModule,

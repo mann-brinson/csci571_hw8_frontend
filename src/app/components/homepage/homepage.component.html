@@ -23,14 +23,6 @@ ngb-carousel .picsum-img-wrapper>img {
 </style>
 </head>
 
-<h1>Home Header</h1>
-
-<div>
-    <a routerLink="/watch/movie/155">Movie Link</a><br>
-    <a routerLink="/watch/tv/155">TV Link</a><br>
-</div>
-
-<h2>Currently Playing (Links) Works</h2>
 <ngb-carousel>
     <ng-template ngbSlide *ngFor="let movie of movies_now_playing">
         <!-- <div *ngIf="movie.id" class="id">{{movie.id}}</div> -->
@@ -47,14 +39,12 @@ ngb-carousel .picsum-img-wrapper>img {
                 </div>
             </div>
         </div>
-
     </ng-template>
 </ngb-carousel>
 
 <div *ngIf="lru_not_empty">
     <h2>Continue Watching</h2>
     <app-multi-item-carousel [movies_list_raw]="continue_watching"></app-multi-item-carousel>
-    {{ continue_watching | json }}
 </div>
 
 <h2>Popular Movies</h2>
