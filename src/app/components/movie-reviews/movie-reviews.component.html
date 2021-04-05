@@ -1,1 +1,24 @@
-<p>movie-reviews works!</p>
+<div *ngIf="!reviews_empty_yn">
+    <h2>Reviews {{ len_reviews }}</h2>
+
+    <div class="container-fluid">
+        <div *ngFor="let review of reviews"class="row">
+            <!-- AVATAR_PATH -->
+            <div class="col-md-4">
+                <img src={{review.avatar_path}} style="max-width: 70px;">
+
+            </div>
+
+            <!-- REVIEW CONTENT -->
+            <div class="col-md-4">.. and full-width ..
+
+            </div>
+        </div>
+    </div>
+
+    <div>{{ reviews | json }}</div>
+
+
+</div>
+
+
