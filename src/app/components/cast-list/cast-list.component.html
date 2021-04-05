@@ -8,9 +8,12 @@
         <div class="card" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 250px;">
             <img id={{cast.id}} class="card-img-top" src={{cast.profile_path}}>
             <div class="card-body">
-            <p class="card-text">{{ cast.name }}</p>
-            <p class="card-text">AS</p>
-            <p class="card-text">{{ cast.character }}</p>
+                <p class="card-text">{{ cast.name }}</p>
+                <div *ngIf="cast.character">
+                    <p class="card-text">AS</p>
+                    <p class="card-text">{{ cast.character }}</p>
+                </div>
+            
             </div>
         </div>
     </div>

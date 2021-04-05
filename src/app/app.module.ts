@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,9 +30,10 @@ import { LocalStorageService } from './components/local-storage/local-storage.se
 import { ContinueWatchLruComponent } from './components/continue-watch-lru/continue-watch-lru.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { CastListComponent } from './components/cast-list/cast-list.component';
 import { CastItemFullService } from './components/cast-modal/castItem.service';
-import { CastModalComponent } from './components/cast-modal/cast-modal.component';
+import { CastModalComponent, CastModalContent } from './components/cast-modal/cast-modal.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { CastModalComponent } from './components/cast-modal/cast-modal.component
     ContinueWatchLruComponent,
     MovieDetailComponent,
     CastListComponent,
-    CastModalComponent
+    CastModalComponent,
+    CastModalContent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import { CastModalComponent } from './components/cast-modal/cast-modal.component
     NgbModule,
     FormsModule,
     YoutubeModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    CommonModule
   ],
   providers: [
     HomepageService, 

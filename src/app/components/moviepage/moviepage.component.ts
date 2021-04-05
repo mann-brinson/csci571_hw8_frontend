@@ -75,7 +75,7 @@ export class MoviepageComponent {
         // console.log({"encoded_youtube": encodeURIComponent(this.youtube_page)})
         // console.log({"fb_share": this.fb_share_page})
 
-        // console.log({"details": this.details.name})
+        console.log({"similar": data.similar})
 
         this.similar = data.similar
         this.recommended = data.recommended
@@ -83,11 +83,11 @@ export class MoviepageComponent {
         //// SET EMPTY_YN FLAGS
         if (this.similar.length != 0) {
           this.similar_empty_yn = false
-        }
+        } else { this.similar_empty_yn = true }
 
         if (this.recommended.length != 0) {
           this.recommended_empty_yn = false
-        }
+        } else { this.recommended_empty_yn = true }
 
         // console.log({"data": this.similar})
         // console.log({"localstorage": this.localStorageService.localStorage})

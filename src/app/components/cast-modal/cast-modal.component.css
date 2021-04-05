@@ -1,0 +1,30 @@
+/* MODAL */
+.modal-dialog {
+    width: 60%;
+    height: 80%;
+}
+
+/* EXTERNAL IDS */
+:host ::ng-deep .cast-detail {
+    margin: 0px;
+}
+
+:host ::ng-deep .icon {
+    margin: 3px
+}
+
+:host ::ng-deep .imdb-square {
+    color: rgb(233,181,0)
+}
+
+:host ::ng-deep .insta-square {
+    color: rgb(151,0,143)
+}
+
+:host ::ng-deep .twitter-square {
+    color: rgb(29, 162, 239)
+}
+
+:host ::ng-deep .fb-square {
+    color: rgb(34,0,255)
+}
