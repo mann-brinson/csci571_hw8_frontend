@@ -2,15 +2,32 @@
     <h2>Reviews {{ len_reviews }}</h2>
 
     <div class="container-fluid">
-        <div *ngFor="let review of reviews"class="row">
+        <!-- <div *ngFor="let review of reviews" class="row"> -->
+            
+        <div *ngFor="let review of reviews;let i = index" class="row">
             <!-- AVATAR_PATH -->
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <img src={{review.avatar_path}} style="max-width: 70px;">
 
             </div>
 
             <!-- REVIEW CONTENT -->
-            <div class="col-md-4">.. and full-width ..
+            <div class="col-md-8">
+
+                <!-- HEADER -->
+                <h2 style="font-size: 22px">A review created by {{review.author}}.
+                    <span class="rounded-pill" style="background-color: rgb(0,0,0); color: white; width: 40px">
+                        <span style="font-size: 18px; top: 50%">★ {{review.rating}}</span>
+                    </span>
+                </h2>
+
+                <!-- WRITTEN_BY + CREATED_DATE -->
+                <div style="color: rgb(155,150,150)">Written by {{review.author}} on {{written_by_datetime[i]}}</div>
+
+                <!-- CONTENT -->
+                <div class="truncate-overflow">{{review.content}}</div>
+
+                <!-- 'READ THE REST' -->
 
             </div>
         </div>
