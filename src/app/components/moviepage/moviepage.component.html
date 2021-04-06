@@ -2,54 +2,71 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=446073933115618&autoLogAppEvents=1" nonce="fVr0K0Vo"></script>
 
-<h1>Movie/TV Header</h1>
 <div class="container">
+
+  <!-- ROW 1: YOUTUBE VID + DETAILS -->
   <div class="row">
-    <div class="col-sm">
+    <div class="col-md-8">
       <app-youtube [video_data]="preview_video"></app-youtube>
     </div>
-    <div class="col-sm">
+    <div class="col-md-4">
       <app-movie-detail [movie_detail]="details" [entity_type]="entity_type"></app-movie-detail>
     </div>
   </div>
+
+  <!-- ROW 2: DESCRIPTION -->
+  <div class="row">
+    <div *ngIf="details.overview" style="padding-bottom: 20px;">
+      <h2>Description</h2>
+      <div>{{ details.overview }}</div>
+    </div>
+  </div>
+
+  <!-- ROW 3: SOCIAL MEDIA SHARING -->
+  <div class="row">
+    <h2 style="font-size: 26px;">Share</h2>
+    <div>
+      <!-- TWITTER SHARE -->
+      <span style="font-size: 40px">
+        <a href={{twitter_share_page}}>
+            <fa-icon class="twitter-square" [icon]="twitter_square" style="padding: 5px;"></fa-icon>
+        </a>
+      </span>
+      
+      <!-- FACEBOOK SHARE -->
+      <span style="font-size: 40px">
+          <a href={{fb_share_page}}>
+              <fa-icon class="fb-square" [icon]="fb_square" style="padding: 5px;"></fa-icon>
+          </a>
+      </span>
+    </div>
+  </div>
+
+  <!-- ROW 4: CREDITS -->
+  <div class="row">
+    <h2>Full Cast & Crew</h2>
+    <app-cast-list [cast_list]="credits"></app-cast-list>
+  </div>
+
+  <!-- ROW 5: REVIEWS -->
+  <div class="row">
+    <app-movie-reviews [reviews]="reviews"></app-movie-reviews>
+  </div>
+
+  <!-- ROW 6: SIMILAR -->
+  <div class="row">
+    <div *ngIf="!similar_empty_yn">
+      <h2>Similar {{entity_type}}</h2>
+      <app-multi-item-carousel [movies_list_raw]="similar"></app-multi-item-carousel>
+    </div>
+  </div>
+
+  <!-- ROW 6: RECOMMENDED -->
+  <div class="row">
+    <div *ngIf="!recommended_empty_yn">
+      <h2>Recommended {{entity_type}}</h2>
+      <app-multi-item-carousel [movies_list_raw]="recommended"></app-multi-item-carousel>
+    </div>
+  </div>
+
 </div>
-
-<div *ngIf="details.overview">
-  <h2>Description</h2>
-  <div>{{ details.overview }}</div>
-</div>
-
-<h2>Share</h2>
-<!-- TWITTER SHARE -->
-<span style="font-size: 40px">
-    <a href={{twitter_share_page}}>
-        <fa-icon class="twitter-square" [icon]="twitter_square"></fa-icon>
-    </a>
-</span>
-
-<!-- FACEBOOK SHARE -->
-<span style="font-size: 40px">
-    <a href={{fb_share_page}}>
-        <fa-icon class="fb-square" [icon]="fb_square"></fa-icon>
-    </a>
-</span>
-
-<h2>Full Cast & Crew</h2>
-<app-cast-list [cast_list]="credits"></app-cast-list>
-<!-- <div>{{ credits | json}}</div> -->
-
-<app-movie-reviews [reviews]="reviews"></app-movie-reviews>
-<!-- <div>{{ reviews | json }}</div> -->
-
-<div *ngIf="!similar_empty_yn">
-    <h2>Similar {{entity_type}}</h2>
-    <app-multi-item-carousel [movies_list_raw]="similar"></app-multi-item-carousel>
-</div>
-
-<div *ngIf="!recommended_empty_yn">
-    <h2>Recommended {{entity_type}}</h2>
-    <app-multi-item-carousel [movies_list_raw]="recommended"></app-multi-item-carousel>
-</div>
-
-<!-- <h2>Movie Contents</h2>
-<div>{{holder | json}}</div> -->

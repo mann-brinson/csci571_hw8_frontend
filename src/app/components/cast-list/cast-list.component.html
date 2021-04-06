@@ -5,16 +5,21 @@
     <!-- <div class="row scrollmenu"> -->
         <!-- <div class="card" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 250px;"> -->
         <!-- <div class="card" *ngFor="let cast of cast_list" style="text-align: center; max-width: 250px;"> -->
-        <div class="card" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 250px;">
+        <div class="card" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 220px; margin: 5px; padding: 0px">
             <img id={{cast.id}} class="card-img-top" src={{cast.profile_path}}>
-            <div class="card-body">
-                <p class="card-text">{{ cast.name }}</p>
-                <div *ngIf="cast.character">
-                    <p class="card-text">AS</p>
-                    <p class="card-text">{{ cast.character }}</p>
-                </div>
+            <p class="card-body" style="padding: 10px; margin: 0px">
+                <span><B>{{ cast.name }}</B></span><br>
+                <span *ngIf="cast.character"><B>AS</B><br> 
+                    <span>{{ cast.character }}</span>
+                </span>
+                <!-- <p class="card-text">{{ cast.name }}</p>
+                <p *ngIf="cast.character" class="card-text">AS<br><span>{{ cast.character }}</span>
+                </p> -->
             
-            </div>
+            </p>
         </div>
     </div>
 </div>
+
+<!-- <p class="card-text">AS</p>
+<p class="card-text">{{ cast.character }}</p> -->
