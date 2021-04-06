@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   public title: string = "USC Films"
+
+  public collapsed: boolean = true
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleCollapsed(): void {
+    console.log("click")
+    this.collapsed = !this.collapsed
   }
 
 }

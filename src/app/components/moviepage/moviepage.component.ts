@@ -86,7 +86,7 @@ export class MoviepageComponent {
 
   addMovieToLRU() {
     ///PARAMETERS
-    var max_lru_length = 2 
+    var max_lru_length = 24
 
     var item_to_add = {"id": this.details.tmdb_id,
                         "name": this.details.name,

@@ -53,14 +53,6 @@
     <app-movie-reviews [reviews]="reviews"></app-movie-reviews>
   </div>
 
-  <!-- ROW 6: SIMILAR -->
-  <div class="row">
-    <div *ngIf="!similar_empty_yn">
-      <h2>Similar {{entity_type}}</h2>
-      <app-multi-item-carousel [movies_list_raw]="similar"></app-multi-item-carousel>
-    </div>
-  </div>
-
   <!-- ROW 6: RECOMMENDED -->
   <div class="row">
     <div *ngIf="!recommended_empty_yn">
@@ -68,5 +60,15 @@
       <app-multi-item-carousel [movies_list_raw]="recommended"></app-multi-item-carousel>
     </div>
   </div>
+
+  <!-- ROW 7: SIMILAR -->
+  <div class="row">
+    <div *ngIf="!similar_empty_yn">
+      <h2>Similar {{entity_type}}</h2>
+      <app-multi-item-carousel [movies_list_raw]="similar"></app-multi-item-carousel>
+    </div>
+  </div>
+
+
 
 </div>

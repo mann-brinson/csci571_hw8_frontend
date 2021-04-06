@@ -2,37 +2,41 @@
     <h2>Reviews {{ len_reviews }}</h2>
 
     <div class="container-fluid">
-        <!-- <div *ngFor="let review of reviews" class="row"> -->
-            
-        <div *ngFor="let review of reviews;let i = index" class="row">
-            <!-- AVATAR_PATH -->
-            <div class="col-md-2">
-                <img src={{review.avatar_path}} style="max-width: 70px;">
+        <!-- TESTING -->
+        <div *ngFor="let review of reviews;let i = index" class="card" style="border-radius: 10px; margin: 20px;">
+            <div class="card-body" style="margin: 5px;">
+                <div class="row">
+                    <!-- AVATAR_PATH -->
+                    <div class="col-md-2" style="padding-left: 20px;">
+                        <img src={{review.avatar_path}} style="max-width: 100px; border-radius: 50%;">
 
-            </div>
+                    </div>
 
-            <!-- REVIEW CONTENT -->
-            <div class="col-md-8">
+                    <!-- REVIEW CONTENT -->
+                    <div class="col-md-8">
 
-                <!-- HEADER -->
-                <h2 style="font-size: 22px">A review created by {{review.author}}.
-                    <span class="rounded-pill" style="background-color: rgb(0,0,0); color: white; width: 40px">
-                        <span style="font-size: 18px; top: 50%">★ {{review.rating}}</span>
-                    </span>
-                </h2>
+                        <!-- HEADER -->
+                        <h2 style="font-size: 22px; margin-bottom: 25px;">A review created by {{review.author}}.
+                            <span class="rounded-pill" style="background-color: rgb(0,0,0); color: white; width: 40px">
+                                <span style="font-size: 18px; top: 50%">★ {{review.rating}}</span>
+                            </span>
+                        </h2>
 
-                <!-- WRITTEN_BY + CREATED_DATE -->
-                <div style="color: rgb(155,150,150)">Written by {{review.author}} on {{written_by_datetime[i]}}</div>
+                        <!-- WRITTEN_BY + CREATED_DATE -->
+                        <div style="color: rgb(155,150,150)">Written by {{review.author}} on {{written_by_datetime[i]}}</div>
 
-                <!-- CONTENT -->
-                <div class="truncate-overflow">{{review.content}}</div>
+                        <!-- CONTENT -->
+                        <div class="truncate-overflow"><br>{{review.content}}</div>
 
-                <!-- 'READ THE REST' -->
-                <div>
-                    <a href={{review.url}}>Read the rest</a>
+                        <!-- 'READ THE REST' -->
+                        <div>
+                            <a href={{review.url}}><br>Read the rest</a>
+                        </div>
+
+                    </div>
                 </div>
-
             </div>
+        
         </div>
     </div>
 </div>

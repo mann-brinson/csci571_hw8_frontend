@@ -5,8 +5,8 @@
     <!-- <div class="row scrollmenu"> -->
         <!-- <div class="card" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 250px;"> -->
         <!-- <div class="card" *ngFor="let cast of cast_list" style="text-align: center; max-width: 250px;"> -->
-        <div class="card" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 220px; margin: 5px; padding: 0px">
-            <img id={{cast.id}} class="card-img-top" src={{cast.profile_path}}>
+        <div class="card" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 220px; margin: 5px; padding: 0px;">
+            <img id={{cast.id}} class="card-img-bottom" src={{cast.profile_path}}>
             <p class="card-body" style="padding: 10px; margin: 0px">
                 <span><B>{{ cast.name }}</B></span><br>
                 <span *ngIf="cast.character"><B>AS</B><br> 

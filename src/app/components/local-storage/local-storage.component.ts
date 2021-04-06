@@ -7,15 +7,6 @@ interface Alert {
   message: string;
 }
 
-// const ALERTS: Alert[] = [{
-//     type: 'success',
-//     message: 'Added to Watchlist.',
-//   }, {
-//     type: 'info',
-//     message: 'Removed from Watchlist.',
-//   }
-// ]
-
 const ALERTS: Alert[] = []
 
 @Component({

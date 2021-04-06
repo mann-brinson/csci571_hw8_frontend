@@ -1,12 +1,9 @@
-<!-- VERSION 2 -->
-<h2>Search VERSION 2</h2>
 <ng-template #rt let-r="result" let-t="term">
   <img [src]="r['backdrop_path']" class="mr-1" style="width: 16px">
   <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
 </ng-template>
 
-<label for="typeahead-template">Search for a movie or tv show</label>
-<input id="typeahead-template" type="text" 
+<input id="typeahead-template" type="text" style="width: 300px; border-bottom-width: 4px; border-bottom-color: white;"
   class="form-control" 
   [(ngModel)]="model" 
   [ngbTypeahead]="search" 
@@ -15,5 +12,3 @@
   placeholder="Search"
   (selectItem)="selectedItem($event)"
   />
-
-<!-- <pre>Model: {{ model | json }}</pre> -->
