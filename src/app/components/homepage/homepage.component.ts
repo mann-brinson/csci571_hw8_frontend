@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, ElementRef, ViewChild, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { isConstructorDeclaration } from 'typescript';
 import { LocalStorageService } from '../local-storage/local-storage.service';
@@ -67,13 +67,13 @@ export class HomepageComponent {
     private homepageService: HomepageService,
     private router: Router,
     private localStorageService: LocalStorageService,
-    private elementRef: ElementRef,
-    private resizeService: ResizeService
+    private _changeDetectorRef: ChangeDetectorRef
     ) { }
 
   ngOnInit() {
     this.homepageService.getHomepage()
       .subscribe((data) => {
+        console.log({"data": data.head})
         // console.log(data.head.now_playing[0].id);
         // console.log(data.movie);
 
@@ -91,7 +91,6 @@ export class HomepageComponent {
           this.lru_not_empty = true
           this.continue_watching = JSON.parse(this.localStorageService.localStorage["lru_cache"])
         }
-        console.log({"local storage": this.localStorageService.localStorage})
       })  
   }
 
@@ -104,24 +103,6 @@ export class HomepageComponent {
     this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }
 
-  // ngAfterViewInit() {
-  //   this.detectScreenSize()
-  // }
-
-  // private detectScreenSize() {
-  //   const currentSize = this.sizes.find(x => {
-  //     // get the HTML element
-  //     const el = this.elementRef.nativeElement.querySelector(`.${this.prefix}${x.id}`);
-
-  //     // check its display property value
-  //     const isVisible = window.getComputedStyle(el).display != 'none';
-
-  //     return isVisible;
-  //   });
-
-  //   this.resizeService.onResize(currentSize!.id);
-
-  // }
 }
 
 

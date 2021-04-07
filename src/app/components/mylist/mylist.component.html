@@ -1,6 +1,23 @@
-<div *ngIf="!watchlist_empty_yn">
+<!-- <div *ngIf="!watchlist_empty_yn">
     <h2>My WatchList</h2>
     <app-multi-item-carousel [movies_list_raw]="watchlist_json"></app-multi-item-carousel>
+</div> -->
+
+<!-- TESTING -->
+<div *ngIf="!watchlist_empty_yn">
+    <h2>My WatchList</h2>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 card primary-card border-0" style="border-radius: 10px;"
+                *ngFor="let card of watchlist_json" (click)="gotoMovieTvPage($event)">
+                    <img class="card-img-top" style="width:200px; border-radius: 10px;" src="{{card.poster_path}}">
+                    <div class="card-img-overlay d-flex flex-column overlay-primary" id={{card.entity_type}}-{{card.id}}>
+                        <h5 id={{card.entity_type}}-{{card.id}} class="card-title mt-auto" style="color:white; bottom: 0;">{{card.name}}</h5>
+                    </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div *ngIf="watchlist_empty_yn" style="text-align: center; height: 80vh">

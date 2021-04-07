@@ -1,6 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { LocalStorageService } from 'src/app/components/local-storage/local-storage.service';
 import { MovieTvItem } from 'src/app/components/homepage/movieTvItem';
 
@@ -24,7 +24,8 @@ export class MylistComponent {
 
   constructor(
     private localStorageService: LocalStorageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
  
   ngOnInit() {
     this.lru_cache = this.localStorageService.localStorage["lru_cache"]
@@ -76,6 +77,16 @@ export class MylistComponent {
 
     }
     
+  }
+
+  gotoMovieTvPage(event: Event) {
+    let entityType_movieId: string = (event.target as Element).id
+    var entity_type = entityType_movieId.split('-')[0]
+    var movie_id = entityType_movieId.split('-')[1]
+
+    console.log({"going to ": [entity_type, movie_id]})
+    // console.log(`/watch/${entity_type}/${movie_id}`)
+    this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }
 
 }

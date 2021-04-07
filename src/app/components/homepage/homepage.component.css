@@ -10,6 +10,18 @@ ngb-carousel .picsum-img-wrapper {
   padding-top: 55%; /* Keep ratio for 900x500 images */
 }
 
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.picsum-img-wrapper .carousel-caption {
+  opacity: 0;
+}
+
+.picsum-img-wrapper:hover .carousel-caption {
+  opacity: 1;
+}
+
 ngb-carousel .picsum-img-wrapper>img {
   position: absolute;
   top: 0;

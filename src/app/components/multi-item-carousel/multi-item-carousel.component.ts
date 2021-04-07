@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, Input, AfterViewInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieTvItem } from 'src/app/components/homepage/movieTvItem';
 import { ResizeService } from '../homepage/resize.service';
@@ -28,7 +28,8 @@ export class MultiItemCarouselComponent {
   public card_img_class = "card-img-overlay-moviepage"
 
   constructor(
-    private router: Router) { }
+    private router: Router,
+    private element: ElementRef) { }
 
   //Must wait until the homepage projects its data into this view
   ngOnChanges() {
@@ -36,7 +37,6 @@ export class MultiItemCarouselComponent {
     if (this.movies_list_raw.length != 0) {
 
       var card_test = document.querySelector('card')
-      console.log({"card_test": card_test})
 
       // Assign the class based on the page that is calling the carousel
       // if (this.primary_page_yn) {
@@ -44,11 +44,6 @@ export class MultiItemCarouselComponent {
       // } else if (!(this.primary_page_yn)) {
 
       // }
-
-
-      console.log('trigger')
-      console.log({"movie_list_raw": this.movies_list_raw})
-      // console.log({"page_caller_type": this.page_caller_type})
 
       // Get the client current width
       this.screenWidth = window.innerWidth
@@ -73,6 +68,9 @@ export class MultiItemCarouselComponent {
         R.push(this.movies_list_raw.slice(i, i + chunkSize));
       }
       this.slides = R;
+
+      //Remove the slide indicators on small screens
+      // let myTag = this.element.nativeElement.getelementsbyClassName
     }
   }
 

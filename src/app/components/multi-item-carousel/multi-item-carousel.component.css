@@ -17,12 +17,6 @@
     padding: 0px;
 }
 
-/* :host ::ng-deep .card-img-overlay {
-    max-width: 200px;
-    opacity: 0;
-    padding: 0px;
-} */
-
 :host ::ng-deep .overlay-primary {
     max-width: 200px;
     opacity: 0;
@@ -38,5 +32,19 @@
 .card:hover .card-img-overlay {
     opacity: 1;
 }
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+:host ::ng-deep .carousel-control-next {
+    width: 5%;
+}
+
+:host ::ng-deep .carousel-control-prev {
+    width: 5%;
+}
+
+:host ::ng-deep .carousel-indicators { display: none; }
 
 /* MOVIEPAGE STYLING */

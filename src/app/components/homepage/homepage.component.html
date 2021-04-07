@@ -1,28 +1,31 @@
 <!-- <div class="container" style="margin-left: 5vw; margin-right: 5vw;"> -->
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-xl-12">
             <ngb-carousel>
-                <ng-template ngbSlide *ngFor="let movie of movies_now_playing">
+                <ng-template #Slide ngbSlide *ngFor="let movie of movies_now_playing">
                     <!-- <div *ngIf="movie.id" class="id">{{movie.id}}</div> -->
                     <div class="container">
-                        <div class="row">
-                            <div class="card">
-                                <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
-                                    <img id={{movie.entity_type}}-{{movie.id}} [src]="movie.backdrop_path">
-                                    <!-- <div id={{movie.entity_type}}></div> -->
-                                    <div class="carousel-caption">
-                                        <h3>{{ movie.name }}</h3>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="card border-0">
+                                    <div class="picsum-img-wrapper" (click)="gotoMoviePage($event)">
+                                        <img id={{movie.entity_type}}-{{movie.id}} [src]="movie.backdrop_path" style="width: 100%; height: auto;">
+                                        <!-- <div id={{movie.entity_type}}></div> -->
+                                        <div class="carousel-caption">
+                                            <h3>{{ movie.name }}</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </ng-template>
             </ngb-carousel>
         </div>
     </div>
 
-    <div class="container-fluid" style="margin-left: 10vw; margin-right: 10vw;">
+    <div *ngIf="continue_watching" class="container-fluid" style="margin-left: 10vw; margin-right: 10vw;">
         <div class="row">
             <div class="col-lg-10">
                 <div *ngIf="lru_not_empty">
@@ -33,7 +36,7 @@
         </div>
     </div>
     
-    <div class="container-fluid" style="margin-left: 10vw; margin-right: 10vw;">
+    <div *ngIf="movies_popular" class="container-fluid" style="margin-left: 10vw; margin-right: 10vw;">
         <div class="row">
             <div class="col-lg-10">
                 <h2>Popular Movies</h2>
