@@ -1,6 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieTvItem } from 'src/app/components/homepage/movieTvItem';
+import { ResizeService } from '../homepage/resize.service';
+
+// An enum that define all screen sizes the application support
+export enum SCREEN_SIZE {
+  XS,
+  SM,
+  MD,
+  LG,
+  XL
+}
 
 @Component({
   selector: 'app-multi-item-carousel',
@@ -10,19 +20,54 @@ import { MovieTvItem } from 'src/app/components/homepage/movieTvItem';
 export class MultiItemCarouselComponent {
   // @Input() movies_popular:MovieTvItem[] = [];
   @Input() movies_list_raw:MovieTvItem[] = []
+  @Input() primary_page_yn: boolean = true
 
+  public slides: any = [[]];
+  public screenWidth: number = 0
+  public card_class = "card-moviepage"
+  public card_img_class = "card-img-overlay-moviepage"
 
-  slides: any = [[]];
-
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router) { }
 
   //Must wait until the homepage projects its data into this view
   ngOnChanges() {
+
     if (this.movies_list_raw.length != 0) {
+
+      var card_test = document.querySelector('card')
+      console.log({"card_test": card_test})
+
+      // Assign the class based on the page that is calling the carousel
+      // if (this.primary_page_yn) {
+        
+      // } else if (!(this.primary_page_yn)) {
+
+      // }
+
+
       console.log('trigger')
       console.log({"movie_list_raw": this.movies_list_raw})
+      // console.log({"page_caller_type": this.page_caller_type})
 
-      var chunkSize = 6;
+      // Get the client current width
+      this.screenWidth = window.innerWidth
+      
+      // Assign a chunk size based on client's current width
+      var chunkSize = 1
+      if (this.screenWidth > 0 && this.screenWidth <= 650) {
+        chunkSize = 1
+      } else if (this.screenWidth > 650 && this.screenWidth <= 900) {
+        chunkSize = 2
+      } else if (this.screenWidth > 900 && this.screenWidth <= 1150) {
+        chunkSize = 3
+      } else if (this.screenWidth > 1150 && this.screenWidth <= 1400) {
+        chunkSize = 4
+      } else if (this.screenWidth > 1400) {
+        chunkSize = 6
+      }
+
+      // Chunk the slides according to the client's curent width
       let R = [];
       for (let i = 0, len = this.movies_list_raw.length; i < len; i += chunkSize) {
         R.push(this.movies_list_raw.slice(i, i + chunkSize));
@@ -32,8 +77,7 @@ export class MultiItemCarouselComponent {
   }
 
   gotoMovieTvPage(event: Event) {
-    console.log(event.target);
-    // let movie_id: string = (event.target as Element).id
+    // console.log(event.target)
     let entityType_movieId: string = (event.target as Element).id
     var entity_type = entityType_movieId.split('-')[0]
     var movie_id = entityType_movieId.split('-')[1]

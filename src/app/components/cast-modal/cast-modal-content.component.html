@@ -28,25 +28,25 @@
                     <p class="cast-detail" *ngIf="also_known_as">Also Known as: {{also_known_as}}</p>
 
                     <!-- EXTERNAL IDS -->
-                    <span class="icon" *ngIf="imdb_page" style="font-size: 40px">
+                    <span class="icon" *ngIf="imdb_page" style="font-size: 40px" placement="top" ngbTooltip="Visit IMDB">
                         <a href={{imdb_page}}>
                             <fa-icon class="imdb-square" [icon]="imdb_square"></fa-icon>
                         </a>
                     </span>
 
-                    <span class="icon" *ngIf="insta_page" style="font-size: 40px">
+                    <span class="icon" *ngIf="insta_page" style="font-size: 40px;" data-toggle="tooltip" placement="top" ngbTooltip="Visit Instagram">
                         <a href={{insta_page}}>
                             <fa-icon class="insta-square" [icon]="insta_square"></fa-icon>
                         </a>
                     </span>
 
-                    <span class="icon" *ngIf="fb_page" style="font-size: 40px">
+                    <span class="icon" *ngIf="fb_page" style="font-size: 40px" placement="top" ngbTooltip="Visit Facebook">
                         <a href={{fb_page}}>
                             <fa-icon class="fb-square" [icon]="fb_square"></fa-icon>
                         </a>
                     </span>
 
-                    <span class="icon" *ngIf="twitter_page" style="font-size: 40px">
+                    <span class="icon" *ngIf="twitter_page" style="font-size: 40px" placement="top" ngbTooltip="Visit Twitter">
                         <a href={{twitter_page}}>
                             <fa-icon class="twitter-square" [icon]="twitter_square"></fa-icon>
                         </a>
@@ -66,3 +66,10 @@
     </div>
 </div>
 <!-- </ng-template> -->
+
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+</script>
+    

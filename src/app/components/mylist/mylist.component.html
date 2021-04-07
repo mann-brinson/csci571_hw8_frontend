@@ -3,8 +3,8 @@
     <app-multi-item-carousel [movies_list_raw]="watchlist_json"></app-multi-item-carousel>
 </div>
 
-<div *ngIf="watchlist_empty_yn">
-    <h2>No items found in Watchlist.</h2>
+<div *ngIf="watchlist_empty_yn" style="text-align: center; height: 80vh">
+    <h2><br><br>No items found in Watchlist.</h2>
 </div>
 
 <!-- <div *ngIf="!watchlist_empty_yn">

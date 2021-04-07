@@ -33,6 +33,8 @@ export class MoviepageComponent {
   public similar: MovieTvItem[] = []
   public recommended: MovieTvItem[] = []
 
+  public primary_page_yn = false
+
   constructor(
     private moviepageService: MoviepageService,
     private route: ActivatedRoute,

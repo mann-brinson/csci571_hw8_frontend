@@ -7,6 +7,17 @@
     overflow-y: auto;
 }
 
+/* TOOLTIP */
+:host ::ng-deep .icon + .tooltip > .tooltip-inner {
+    background-color: white;
+    color: black;
+    border: black;
+}
+
+:host ::ng-deep .icon + .tooltip.top > .arrow {
+    border-top: white;
+}
+
 /* EXTERNAL IDS */
 :host ::ng-deep .cast-detail {
     margin: 0px;

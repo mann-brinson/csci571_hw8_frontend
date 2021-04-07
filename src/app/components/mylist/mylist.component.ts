@@ -13,7 +13,6 @@ export class MylistComponent {
   lru_cache: any
   watchlist: any
   len_localStorage: number = 0;
-  len_localStorage2: any;
   localStorage_not_empty: boolean = false;
   localStorage_items: any = [];
 
@@ -21,30 +20,21 @@ export class MylistComponent {
   watchlist_empty_yn: boolean = true
 
   lruCache_json: object = {}
-  // lruCache_json: MovieTvItem[] = [];
-  // watchlist_json: object = {}
   watchlist_json: MovieTvItem[] = []
-  // localStorage = this.localStorageService
 
   constructor(
     private localStorageService: LocalStorageService,
     private route: ActivatedRoute) { }
-
-  // jsonToMovieTvItem()
  
   ngOnInit() {
-    // console.log(this.localStorageChanges$)
-    console.log("trigger")
     this.lru_cache = this.localStorageService.localStorage["lru_cache"]
     this.watchlist = this.localStorageService.localStorage["watchlist"]
 
     this.len_localStorage = this.localStorageService.localStorage.length
-    // this.len_localStorage2 = JSON.parse(this.localStorageService.localStorage.getItem("key")!)
 
-    console.log({"lru_cache": this.lru_cache})
-    console.log({"watchlist": this.watchlist})
-    console.log({"len_localstorage": this.len_localStorage})
-    // console.log({"len_localstorage2": this.len_localStorage2})
+    // console.log({"lru_cache": this.lru_cache})
+    // console.log({"watchlist": this.watchlist})
+    // console.log({"len_localstorage": this.len_localStorage})
 
     //// JSON-TO-INTERFACE HELPERS
     function adapt(mapper: any, json: any) {

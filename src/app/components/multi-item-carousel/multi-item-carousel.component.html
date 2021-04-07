@@ -1,17 +1,17 @@
-<ngb-carousel>
+<ngb-carousel [interval]="0">
     <ng-template ngbSlide *ngFor="let group of slides">
-        <div class="container">
+        <div class="container-fluid">
+            <!-- RESIZE BASED ON CALLER TYPE : TESTING -->
             <div class="row">
-                <!-- TODO: Event emitter service to call the getMoviePage() method on -->
-                <!-- <div class="col-sm-2 card" *ngFor="let card of group"> -->
-                <div class="col-sm-2 card" *ngFor="let card of group" (click)="gotoMovieTvPage($event)">
-                    
-                    <img class="card-img-top" style="max-width:200px;min-width:100px" src="{{card.poster_path}}">
-                    <div id={{card.entity_type}}-{{card.id}} class="card-img-overlay">
+                <div class="col-sm-2 card" [ngClass]="primary_page_yn ? 'primary-card' : 'secondary-card'" 
+                    *ngFor="let card of group" (click)="gotoMovieTvPage($event)">
+                    <img class="card-img-top" style="width:200px;" src="{{card.poster_path}}">
+                    <div class="card-img-overlay" id={{card.entity_type}}-{{card.id}} [ngClass]="primary_page_yn ? 'overlay-primary' : 'overlay-secondary'">
                         <h5 id={{card.entity_type}}-{{card.id}} class="card-title" style="color:white;">{{card.name}}</h5>
                     </div>
                 </div>
             </div>
+
         </div>
     </ng-template>
 </ngb-carousel>

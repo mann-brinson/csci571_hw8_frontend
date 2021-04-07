@@ -35,6 +35,7 @@ import { CastListComponent } from './components/cast-list/cast-list.component';
 import { CastItemFullService } from './components/cast-modal/castItem.service';
 import { CastModalComponent, CastModalContent } from './components/cast-modal/cast-modal.component';
 import { MovieReviewsComponent } from './components/movie-reviews/movie-reviews.component';
+import { ResizeService } from './components/homepage/resize.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { MovieReviewsComponent } from './components/movie-reviews/movie-reviews.
     MoviepageService, 
     LocalStorageService,
     CastItemFullService,
-    CastModalComponent
+    CastModalComponent,
+    ResizeService
   ],
   bootstrap: [AppComponent]
 })

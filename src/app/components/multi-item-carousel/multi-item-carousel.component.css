@@ -1,0 +1,42 @@
+/* HOMEPAGE STYLING */
+/* :host ::ng-deep .card {
+    margin: 10px;
+    width: 200px;
+    padding: 0px;
+} */
+
+:host ::ng-deep .primary-card {
+    margin: 10px;
+    width: 200px;
+    padding: 0px;
+}
+
+:host ::ng-deep .secondary-card {
+    margin: 42px;
+    width: 125px;
+    padding: 0px;
+}
+
+/* :host ::ng-deep .card-img-overlay {
+    max-width: 200px;
+    opacity: 0;
+    padding: 0px;
+} */
+
+:host ::ng-deep .overlay-primary {
+    max-width: 200px;
+    opacity: 0;
+    padding: 0px;
+}
+
+:host ::ng-deep .overlay-secondary {
+    max-width: 125px;
+    opacity: 0;
+    padding: 0px;
+}
+
+.card:hover .card-img-overlay {
+    opacity: 1;
+}
+
+/* MOVIEPAGE STYLING */

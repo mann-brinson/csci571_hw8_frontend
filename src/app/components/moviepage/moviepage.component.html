@@ -57,7 +57,7 @@
   <div class="row">
     <div *ngIf="!recommended_empty_yn">
       <h2>Recommended {{entity_type}}</h2>
-      <app-multi-item-carousel [movies_list_raw]="recommended"></app-multi-item-carousel>
+      <app-multi-item-carousel [movies_list_raw]="recommended" [primary_page_yn]="primary_page_yn"></app-multi-item-carousel>
     </div>
   </div>
 
@@ -65,7 +65,7 @@
   <div class="row">
     <div *ngIf="!similar_empty_yn">
       <h2>Similar {{entity_type}}</h2>
-      <app-multi-item-carousel [movies_list_raw]="similar"></app-multi-item-carousel>
+      <app-multi-item-carousel [movies_list_raw]="similar" [primary_page_yn]="primary_page_yn"></app-multi-item-carousel>
     </div>
   </div>
 

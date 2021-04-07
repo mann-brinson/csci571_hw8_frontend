@@ -1,17 +1,28 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { isConstructorDeclaration } from 'typescript';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { HomepageService } from './homepage.service';
 
 import { MovieItem } from './movieItem';
 import { MovieTvItem } from './movieTvItem';
+import { ResizeService } from './resize.service';
+
+// An enum that define all screen sizes the application support
+export enum SCREEN_SIZE {
+  XS,
+  SM,
+  MD,
+  LG,
+  XL
+}
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent {
 
   holder = {};
   public movies_now_playing: MovieItem[] = [];
@@ -26,12 +37,39 @@ export class HomepageComponent implements OnInit {
   public lru_not_empty = false
   public continue_watching: MovieTvItem[] = []
 
-  slides: any = [[]];
+  slides: any = [[]]
+
+  prefix = 'is-';
+  sizes = [
+    {
+      id: SCREEN_SIZE.XS, name: 'xs', css: `d-block d-sm-none`
+    },
+    {
+      id: SCREEN_SIZE.SM, name: 'sm', css: `d-none d-sm-block d-md-none`
+    },
+    {
+      id: SCREEN_SIZE.MD, name: 'md', css: `d-none d-md-block d-lg-none`
+    },
+    {
+      id: SCREEN_SIZE.LG, name: 'lg', css: `d-none d-lg-block d-xl-none`
+    },
+    {
+      id: SCREEN_SIZE.XL, name: 'xl', css: `d-none d-xl-block`
+    },
+  ];
+
+  // @HostListener("window:resize", [])
+  // private onResize() {
+  //   this.detectScreenSize()
+  // }
 
   constructor(
     private homepageService: HomepageService,
     private router: Router,
-    private localStorageService: LocalStorageService) { }
+    private localStorageService: LocalStorageService,
+    private elementRef: ElementRef,
+    private resizeService: ResizeService
+    ) { }
 
   ngOnInit() {
     this.homepageService.getHomepage()
@@ -66,7 +104,25 @@ export class HomepageComponent implements OnInit {
     this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }
 
+  // ngAfterViewInit() {
+  //   this.detectScreenSize()
+  // }
 
+  // private detectScreenSize() {
+  //   const currentSize = this.sizes.find(x => {
+  //     // get the HTML element
+  //     const el = this.elementRef.nativeElement.querySelector(`.${this.prefix}${x.id}`);
 
+  //     // check its display property value
+  //     const isVisible = window.getComputedStyle(el).display != 'none';
+
+  //     return isVisible;
+  //   });
+
+  //   this.resizeService.onResize(currentSize!.id);
+
+  // }
 }
+
+
 
