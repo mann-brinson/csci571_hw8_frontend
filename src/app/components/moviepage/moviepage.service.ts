@@ -10,7 +10,7 @@ export class MoviepageService {
 
     getMoviepage(movie_id: string, entity_type: string): Observable<MovieObj> {
 
-        var url = `http://localhost:8080/watch/${entity_type}/${movie_id}`
+        var url = `http://localhost:8080/apis/watch/${entity_type}/${movie_id}`
         return this.http.get<MovieObj>(url)
     }
 

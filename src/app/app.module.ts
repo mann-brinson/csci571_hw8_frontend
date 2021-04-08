@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common'; 
@@ -68,7 +68,8 @@ import { ResizeService } from './components/homepage/resize.service';
     LocalStorageService,
     CastItemFullService,
     CastModalComponent,
-    ResizeService
+    ResizeService, 
+    Title
   ],
   bootstrap: [AppComponent]
 })

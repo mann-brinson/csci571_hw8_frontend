@@ -6,7 +6,7 @@ import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap} fro
 import { SearchResultItem } from './SearchResultItem';
 
 //// MOVIE APP
-const SEARCH_URL = 'http://localhost:8080/search/';
+const SEARCH_URL = 'http://localhost:8080/apis/search/';
 
 @Injectable()
 export class SearchService {

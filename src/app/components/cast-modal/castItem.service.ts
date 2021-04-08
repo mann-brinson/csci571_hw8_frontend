@@ -10,7 +10,7 @@ export class CastItemFullService {
 
     // WORKING
     getCastItemFull(person_id: string): Observable<CastItemFull> {
-        var cast_url = `http://localhost:8080/person/${person_id}` //REPLACE WITH GCP HOST
+        var cast_url = `http://localhost:8080/apis/person/${person_id}` //REPLACE WITH GCP HOST
         return this.http.get<CastItemFull>(cast_url)
     }
 
