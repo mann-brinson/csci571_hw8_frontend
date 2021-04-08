@@ -1,2 +1,7 @@
-<!-- <div>Youtube ID: {{video_data.key}}</div> -->
-<youtube-player videoId={{video_data.key}}></youtube-player>
+<div #YouTubePlayer>
+    <youtube-player 
+        videoId={{video_data.key}}
+        [width]="videoWidth" [height]="videoHeight">
+    </youtube-player>
+</div>
+

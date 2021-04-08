@@ -1,37 +1,14 @@
-<!-- MOVIE APP -->
-
-<!-- VERSION 1 -->
-<!-- <h2>Search VERSION 1</h2>
-<ng-template #rt let-r="result" let-t="term">
-  <img [src]="r['backdrop_path']" class="mr-1" style="width: 16px">
+<ng-template #rt let-r="result" let-t="term" style="height: 100px;">
+  <img [src]="r['backdrop_path']" class="mr-1" style="width: 80px">
   <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
 </ng-template>
 
-<label for="typeahead-template">Search for a movie or tv show</label>
-<input id="typeahead-template" type="text" 
-  class="form-control" 
-  [(ngModel)]="model" 
-  [ngbTypeahead]="search" 
-  [resultTemplate]="rt"
-  [inputFormatter]="formatter" />
-<hr>
-<pre>Model: {{ model | json }}</pre> -->
-
-<!-- VERSION 2 -->
-<h2>Search VERSION 2</h2>
-<ng-template #rt let-r="result" let-t="term">
-  <img [src]="r['backdrop_path']" class="mr-1" style="width: 16px">
-  <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
-</ng-template>
-
-<label for="typeahead-template">Search for a movie or tv show</label>
-<input id="typeahead-template" type="text" 
+<input class="search-box" id="typeahead-template" type="text" style="background-color: rgb(5,8,51); color: white;"
   class="form-control" 
   [(ngModel)]="model" 
   [ngbTypeahead]="search" 
   [resultTemplate]="rt"
   [inputFormatter]="formatter" 
+  placeholder="Search"
   (selectItem)="selectedItem($event)"
   />
-<hr>
-<pre>Model: {{ model | json }}</pre>

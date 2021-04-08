@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FirstChildComponent } from './first-child.component';
+import { CastListComponent } from './cast-list.component';
 
-describe('FirstChildComponent', () => {
-  let component: FirstChildComponent;
-  let fixture: ComponentFixture<FirstChildComponent>;
+describe('CastListComponent', () => {
+  let component: CastListComponent;
+  let fixture: ComponentFixture<CastListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FirstChildComponent ]
+      declarations: [ CastListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FirstChildComponent);
+    fixture = TestBed.createComponent(CastListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,39 @@
+/* GLOBAL STYLING */
+:host ::ng-deep img {
+    /* width: 750px; */
+    resize: both;
+    max-width: 1200px;
+}
+
+ngb-carousel .picsum-img-wrapper {
+  position: relative;
+  height: 0;
+  padding-top: 55%; /* Keep ratio for 900x500 images */
+}
+
+.picsum-img-wrapper:hover .carousel-caption {
+  opacity: 1;
+}
+
+ngb-carousel .picsum-img-wrapper>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* NON-MOBILE STYLING */
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* MOBILE STYLING */
+.non-phone-screen {
+  opacity: 0;
+}
+
+.phone-screen {
+  opacity: 1;
+  font-size: 12px !important;
+}

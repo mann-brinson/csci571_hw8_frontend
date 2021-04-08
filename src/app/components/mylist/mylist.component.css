@@ -1,0 +1,40 @@
+/* GLOBAL STYLING */
+:host ::ng-deep .carousel-control-next {
+    width: 5%;
+}
+
+:host ::ng-deep .carousel-control-prev {
+    width: 5%;
+}
+
+/* MYLIST STYLING */
+:host ::ng-deep .primary-card {
+    margin: 10px;
+    width: 200px;
+    padding: 0px;
+}
+
+:host ::ng-deep .overlay-primary {
+    max-width: 200px;
+    /* opacity: 0; */
+    padding: 0px;
+}
+
+/* NON-MOBILE STYLING */
+.card:hover .card-img-overlay {
+    opacity: 1;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+/* MOBILE STYLING */
+.non-phone-screen {
+    opacity: 0;
+}
+
+.phone-screen {
+    opacity: 1;
+}
+

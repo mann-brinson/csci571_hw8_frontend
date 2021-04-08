@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommonpageComponent } from './commonpage.component';
+import { MovieReviewsComponent } from './movie-reviews.component';
 
-describe('CommonpageComponent', () => {
-  let component: CommonpageComponent;
-  let fixture: ComponentFixture<CommonpageComponent>;
+describe('MovieReviewsComponent', () => {
+  let component: MovieReviewsComponent;
+  let fixture: ComponentFixture<MovieReviewsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CommonpageComponent ]
+      declarations: [ MovieReviewsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommonpageComponent);
+    fixture = TestBed.createComponent(MovieReviewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

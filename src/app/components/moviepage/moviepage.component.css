@@ -1,0 +1,7 @@
+:host ::ng-deep .twitter-square {
+    color: rgb(29, 162, 239)
+}
+
+:host ::ng-deep .fb-square {
+    color: rgb(34,0,255)
+}

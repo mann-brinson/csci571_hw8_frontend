@@ -1,2 +1,17 @@
-<h2>Details</h2>
-<div>{{ movie_detail | json }}</div>
+<div class="container-fluid" style="padding: 0px">
+    <div class="row"><h1 style="font-size: 40px;">{{ movie_detail.name }}</h1>
+    </div>
+    <div *ngIf="movie_detail.tagline" class="row"><p style="font-size: 20px; font-style: italic">{{ movie_detail.tagline }}</p>
+    </div>
+    <div *ngIf="year_rating_duration" class="row"><p style="font-size: 20px">{{ year_rating_duration }}</p>
+    </div>
+    <div *ngIf="genres_str" class="row"><p style="font-size: 16px"><B>Genres:</B> {{ genres_str }}</p>
+    </div>
+    <div *ngIf="langs_str" class="row"><p style="font-size: 16px"><B>Spoken Languages:</B> {{ langs_str }}</p>
+    </div>
+    <div class="row">
+        <app-local-storage [movie_details]="movie_detail"
+                   [entity_type]="entity_type"></app-local-storage>
+    </div>
+
+</div>

@@ -1,8 +1,8 @@
-import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 import { LocalStorageService } from 'src/app/components/local-storage/local-storage.service';
 import { MovieTvItem } from 'src/app/components/homepage/movieTvItem';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-mylist',
@@ -13,7 +13,6 @@ export class MylistComponent {
   lru_cache: any
   watchlist: any
   len_localStorage: number = 0;
-  len_localStorage2: any;
   localStorage_not_empty: boolean = false;
   localStorage_items: any = [];
 
@@ -21,30 +20,20 @@ export class MylistComponent {
   watchlist_empty_yn: boolean = true
 
   lruCache_json: object = {}
-  // lruCache_json: MovieTvItem[] = [];
-  // watchlist_json: object = {}
   watchlist_json: MovieTvItem[] = []
-  // localStorage = this.localStorageService
+
+  public small_screen_yn: boolean = false
 
   constructor(
     private localStorageService: LocalStorageService,
-    private route: ActivatedRoute) { }
-
-  // jsonToMovieTvItem()
+    private router: Router,
+    private breakpointObserver: BreakpointObserver) { }
  
   ngOnInit() {
-    // console.log(this.localStorageChanges$)
-    console.log("trigger")
+    // Check localstorage and set variables
     this.lru_cache = this.localStorageService.localStorage["lru_cache"]
     this.watchlist = this.localStorageService.localStorage["watchlist"]
-
     this.len_localStorage = this.localStorageService.localStorage.length
-    // this.len_localStorage2 = JSON.parse(this.localStorageService.localStorage.getItem("key")!)
-
-    console.log({"lru_cache": this.lru_cache})
-    console.log({"watchlist": this.watchlist})
-    console.log({"len_localstorage": this.len_localStorage})
-    // console.log({"len_localstorage2": this.len_localStorage2})
 
     //// JSON-TO-INTERFACE HELPERS
     function adapt(mapper: any, json: any) {
@@ -68,24 +57,46 @@ export class MylistComponent {
     }
 
     //// DRIVER
+
+    // Check if screen is smartphone
+    // ASSUME: if screen is <500px that the device is smartphone
+    this.breakpointObserver
+    .observe(['(min-width: 500px)'])
+    .subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        // console.log('Viewport is 500px or over!')
+        this.small_screen_yn = false
+
+      } else {
+        // console.log('Viewport is smaller than 500px!')
+        this.small_screen_yn = true
+
+      }
+    });
+
+    // CONTINUE WATCHING EXISTS
     if (this.lru_cache != undefined) {
-      console.log("lru_cache exists")
       this.lruCache_empty_yn = false
       this.lruCache_json = JSON.parse(this.lru_cache)
-
-      // console.log({"lruCache_json": typeof this.lruCache_json})
     }
 
+    // WATCHLIST EXISTS
     if (this.watchlist != undefined) {
       this.watchlist_empty_yn = false
 
       var watchlist_json_v1 = JSON.parse(this.watchlist)
       this.watchlist_json = watchlist_json_v1.map((record: any) => JSONtoMovieTvItemMapper(record))
-      
-      // console.log(this.watchlist_json)
-
     }
     
+  }
+
+  gotoMovieTvPage(event: Event) {
+    let entityType_movieId: string = (event.target as Element).id
+    var entity_type = entityType_movieId.split('-')[0]
+    var movie_id = entityType_movieId.split('-')[1]
+
+    // console.log({"going to ": [entity_type, movie_id]})
+    this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }
 
 }

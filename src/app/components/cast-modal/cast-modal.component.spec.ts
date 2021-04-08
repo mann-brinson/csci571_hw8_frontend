@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContinueWatchLruComponent } from './continue-watch-lru.component';
+import { CastModalComponent } from './cast-modal.component';
 
-describe('ContinueWatchLruComponent', () => {
-  let component: ContinueWatchLruComponent;
-  let fixture: ComponentFixture<ContinueWatchLruComponent>;
+describe('CastModalComponent', () => {
+  let component: CastModalComponent;
+  let fixture: ComponentFixture<CastModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContinueWatchLruComponent ]
+      declarations: [ CastModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContinueWatchLruComponent);
+    fixture = TestBed.createComponent(CastModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

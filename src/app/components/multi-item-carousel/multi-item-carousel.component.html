@@ -1,14 +1,12 @@
-<ngb-carousel>
+<ngb-carousel [interval]="0" [showNavigationIndicators]="!small_screen_yn">
     <ng-template ngbSlide *ngFor="let group of slides">
-        <div class="container">
-            <div class="row">
-                <!-- TODO: Event emitter service to call the getMoviePage() method on -->
-                <!-- <div class="col-sm-2 card" *ngFor="let card of group"> -->
-                <div class="col-sm-2 card" *ngFor="let card of group" (click)="gotoMovieTvPage($event)">
-                    <img class="card-img-top" style="max-width:200px;min-width:100px" src="{{card.poster_path}}" >
-                    <div class="card-img-overlay">
-                        <h5 id={{card.entity_type}}-{{card.id}} class="card-title" style="color:white;">{{card.name}}</h5>
-                    </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-2 card border-0" [ngClass]="[primary_page_yn ? 'primary-card' : 'secondary-card']" 
+                style="border-radius: 10px;" *ngFor="let card of group" (click)="gotoMovieTvPage($event)">
+                <img class="card-img-top" style="width:200px; border-radius: 10px;" src="{{card.poster_path}}">
+                <div class="card-img-overlay d-flex flex-column" id={{card.entity_type}}-{{card.id}} 
+                    [ngClass]="[primary_page_yn ? 'overlay-primary' : 'overlay-secondary', small_screen_yn ? 'phone-screen' : 'non-phone-screen']">
+                    <h5 id={{card.entity_type}}-{{card.id}} class="card-title mt-auto" style="color:white; margin-left: 10px;">{{card.name}}</h5>
                 </div>
             </div>
         </div>
