@@ -33,8 +33,7 @@ export class YoutubeComponent {
 
   onResize = (): void => {
     // Automatically expand the video to fit the page up to 1000px width
-    this.videoWidth = Math.min(this.YouTubePlayer!.nativeElement.clientWidth, 1000);
-    // console.log({"width": this.YouTubePlayer!.nativeElement.clientWidth})
+    this.videoWidth = Math.min(this.YouTubePlayer!.nativeElement.clientWidth, 1000)
     this.videoHeight = this.videoWidth * 0.6;
     this._changeDetectorRef.detectChanges();
   }

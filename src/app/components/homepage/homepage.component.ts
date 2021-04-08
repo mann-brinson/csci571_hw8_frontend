@@ -1,12 +1,12 @@
-import { Component, OnInit, AfterViewInit, HostListener, ElementRef, ViewChild, ChangeDetectorRef, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { isConstructorDeclaration } from 'typescript';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { HomepageService } from './homepage.service';
 
 import { MovieItem } from './movieItem';
 import { MovieTvItem } from './movieTvItem';
-import { ResizeService } from './resize.service';
+
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 // An enum that define all screen sizes the application support
 export enum SCREEN_SIZE {
@@ -37,45 +37,35 @@ export class HomepageComponent {
   public lru_not_empty = false
   public continue_watching: MovieTvItem[] = []
 
+  public small_screen_yn: boolean = false
+
   slides: any = [[]]
-
-  prefix = 'is-';
-  sizes = [
-    {
-      id: SCREEN_SIZE.XS, name: 'xs', css: `d-block d-sm-none`
-    },
-    {
-      id: SCREEN_SIZE.SM, name: 'sm', css: `d-none d-sm-block d-md-none`
-    },
-    {
-      id: SCREEN_SIZE.MD, name: 'md', css: `d-none d-md-block d-lg-none`
-    },
-    {
-      id: SCREEN_SIZE.LG, name: 'lg', css: `d-none d-lg-block d-xl-none`
-    },
-    {
-      id: SCREEN_SIZE.XL, name: 'xl', css: `d-none d-xl-block`
-    },
-  ];
-
-  // @HostListener("window:resize", [])
-  // private onResize() {
-  //   this.detectScreenSize()
-  // }
 
   constructor(
     private homepageService: HomepageService,
     private router: Router,
     private localStorageService: LocalStorageService,
-    private _changeDetectorRef: ChangeDetectorRef
+    private breakpointObserver: BreakpointObserver
     ) { }
 
   ngOnInit() {
+
+    // Check if screen is smartphone
+    // ASSUME: if screen is <500px that the device is smartphone
+    this.breakpointObserver
+    .observe(['(min-width: 500px)'])
+    .subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        console.log('Viewport is 500px or over!')
+        this.small_screen_yn = false
+      } else {
+        console.log('Viewport is smaller than 500px!')
+        this.small_screen_yn = true
+      }
+    });
+
     this.homepageService.getHomepage()
       .subscribe((data) => {
-        console.log({"data": data.head})
-        // console.log(data.head.now_playing[0].id);
-        // console.log(data.movie);
 
         this.holder = data;
         this.movies_now_playing = data.head.now_playing;
@@ -99,7 +89,7 @@ export class HomepageComponent {
     var entity_type = entityType_movieId.split("-")[0]
     var movie_id = entityType_movieId.split("-")[1]
 
-    console.log({"going to ": [entity_type, movie_id]})
+    // console.log({"going to ": [entity_type, movie_id]})
     this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }
 

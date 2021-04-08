@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ReviewItem } from './reviewItem';
 
 @Component({
@@ -17,7 +17,6 @@ export class MovieReviewsComponent {
   constructor() { }
 
   ngOnChanges() {
-    console.log({"reviews": this.reviews.length})
     this.len_reviews = this.reviews.length
 
     if (this.len_reviews > 0) {
@@ -34,9 +33,6 @@ export class MovieReviewsComponent {
         else {date_am_pm = "AM"}
         
         let formatted_date = `${date_raw.toLocaleString('default', { month: 'long' })} ${date_raw.getDate()}, ${date_raw.getFullYear()}, ${hours_1}:${date_raw.getMinutes()}:${date_raw.getSeconds()} ${date_am_pm}`
-
-        console.log({"review date": formatted_date})
-        // console.log(date_raw.get)
         this.written_by_datetime.push(formatted_date)
 
       })
@@ -45,5 +41,4 @@ export class MovieReviewsComponent {
     }
     
   }
-
 }

@@ -2,7 +2,7 @@
 <div style="max-width: 1000px">
     <!-- HEADER -->
     <div class="modal-header-md" style="border-bottom: 1px solid gainsboro;">
-        <h4 class="modal-title" style="padding-top: 2vh; padding-left: 2vw;">{{ name }}
+        <h4 class="modal-title" style="padding-top: 2vh; padding-left: 1vw;">{{ name }}
             <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')" style="margin-right: 1vw">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -14,7 +14,7 @@
     <div class="modal-body-md">
         <!-- DETAILS -->
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" style="padding-top: 0.5vh;">
                 <!-- COL 1: PROFILE PIC -->
                 <div class="col-md-4">
                     <img src={{profile_path}} style="max-width: 250px;">

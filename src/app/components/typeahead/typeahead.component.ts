@@ -1,7 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, Injectable, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of, OperatorFunction} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap} from 'rxjs/operators';
 import { SearchResultItem } from './SearchResultItem';
 
@@ -41,8 +41,6 @@ export class TypeaheadComponent {
   searching = false;
   searchFailed = false;
 
-  // clickedItem = {};
-
   constructor(
     private _service: SearchService,
     private router: Router
@@ -77,14 +75,15 @@ export class TypeaheadComponent {
 
   tmdb_id = "";
   media_type = "";
+
   selectedItem(event: any) {
     // this.clickedItem = item
     this.tmdb_id = event.item.id;
     this.media_type = event.item.media_type;
 
-    console.log({"tmdb_id": this.tmdb_id,
-                  "media_type": this.media_type})
-    console.log(`/watch/${this.media_type}/${this.tmdb_id}`)
+    // console.log({"tmdb_id": this.tmdb_id,
+    //               "media_type": this.media_type})
+    // console.log(`/watch/${this.media_type}/${this.tmdb_id}`)
     this.router.navigate([`/watch/${this.media_type}/${this.tmdb_id}`]);
     
   }

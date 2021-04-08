@@ -17,14 +17,14 @@
   <!-- ROW 2: DESCRIPTION -->
   <div class="row">
     <div *ngIf="details.overview" style="padding-bottom: 20px;">
-      <h2>Description</h2>
+      <h2><br>Description</h2>
       <div>{{ details.overview }}</div>
     </div>
   </div>
 
   <!-- ROW 3: SOCIAL MEDIA SHARING -->
   <div class="row">
-    <h2 style="font-size: 26px;">Share</h2>
+    <h2 style="font-size: 26px;"><br>Share</h2>
     <div>
       <!-- TWITTER SHARE -->
       <span style="font-size: 40px">
@@ -56,7 +56,7 @@
   <!-- ROW 6: RECOMMENDED -->
   <div class="row">
     <div *ngIf="!recommended_empty_yn">
-      <h2>Recommended {{entity_type}}</h2>
+      <h2>Recommended {{entity_type_pretty}}</h2>
       <app-multi-item-carousel [movies_list_raw]="recommended" [primary_page_yn]="primary_page_yn"></app-multi-item-carousel>
     </div>
   </div>
@@ -64,7 +64,7 @@
   <!-- ROW 7: SIMILAR -->
   <div class="row">
     <div *ngIf="!similar_empty_yn">
-      <h2>Similar {{entity_type}}</h2>
+      <h2>Similar {{entity_type_pretty}}</h2>
       <app-multi-item-carousel [movies_list_raw]="similar" [primary_page_yn]="primary_page_yn"></app-multi-item-carousel>
     </div>
   </div>

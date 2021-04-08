@@ -1,10 +1,5 @@
-<!-- TESTING -->
 <div class="container-fluid">
     <div class="row flex-row flex-nowrap" style="overflow-y: hidden;">
-    <!-- <div class="container horizontal-scrollable"> -->
-    <!-- <div class="row scrollmenu"> -->
-        <!-- <div class="card" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 250px;"> -->
-        <!-- <div class="card" *ngFor="let cast of cast_list" style="text-align: center; max-width: 250px;"> -->
         <div class="card border-0" *ngFor="let cast of cast_list" (click)="openCastModal($event)" style="text-align: center; max-width: 220px; margin: 5px; padding: 0px; color: black;">
             <img id={{cast.id}} class="card-img-bottom" src={{cast.profile_path}}>
             <p class="card-body" style="padding: 10px; margin: 0px">
@@ -12,14 +7,7 @@
                 <span *ngIf="cast.character"><B>AS</B><br> 
                     <span>{{ cast.character }}</span>
                 </span>
-                <!-- <p class="card-text">{{ cast.name }}</p>
-                <p *ngIf="cast.character" class="card-text">AS<br><span>{{ cast.character }}</span>
-                </p> -->
-            
             </p>
         </div>
     </div>
 </div>
-
-<!-- <p class="card-text">AS</p>
-<p class="card-text">{{ cast.character }}</p> -->

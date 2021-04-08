@@ -1,15 +1,13 @@
 <div *ngIf="!reviews_empty_yn">
-    <h2>Reviews&nbsp;&nbsp;<span style="color: rgb(112,118,147)">{{ len_reviews }}</span></h2>
+    <h2><br>Reviews&nbsp;&nbsp;<span style="color: rgb(112,118,147)">{{ len_reviews }}</span></h2>
 
     <div class="container-fluid">
-        <!-- TESTING -->
         <div *ngFor="let review of reviews;let i = index" class="card" style="border-radius: 10px; margin: 20px;">
             <div class="card-body" style="margin: 5px;">
                 <div class="row">
                     <!-- AVATAR_PATH -->
                     <div class="col-md-2" style="padding-left: 20px;">
                         <img src={{review.avatar_path}} style="max-width: 100px; border-radius: 50%;">
-
                     </div>
 
                     <!-- REVIEW CONTENT -->

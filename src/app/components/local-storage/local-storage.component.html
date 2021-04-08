@@ -1,34 +1,8 @@
-<button type="button" class="btn btn-primary" 
-        (click)="clearWatchList()">Clear</button><br>
-
-<!-- <button id="button" type="button" class="btn btn-primary" 
-        (click)="changeLabelName()">Add to Watchlist</button><br> -->
-
-<!-- <button id="button-2" type="button" class="btn btn-primary" 
-        (click)="checkForCurrentMovie()">In Watchlist?</button><br> -->
-
-<!-- <button id="button-3" type="button" class="btn btn-primary" 
-        (click)="putMoviev2()">Add Movie v2</button><br> -->
-
-<!-- <button id="button-4" type="button" class="btn btn-primary" 
-        (click)="removeMoviev2()">Remove Movie v2</button><br> -->
+<!-- <button type="button" class="btn btn-primary" 
+        (click)="clearWatchList()">Clear</button><br> -->
 
 <button id="button-5" type="button" class="btn btn-primary"
         (click)="finalButton()">{{ button_text }}</button><br>
-
-<!-- <div #addAlert class="alert alert-success alert-dismissible fade" role="alert">
-        <button id="add_item" type="button" class="close" aria-label="Close" (click)="closeAlert($event)">
-                <span id="add_item" aria-hidden="true">&times;</span>
-        </button>
-        Added to Watchlist.
-</div>
-
-<div #removeAlert class="alert alert-secondary alert-dismissible fade" role="alert">
-        <button type="button" class="close" aria-label="Close" (click)="closeAlert($event)">
-                <span id="remove_item" aria-hidden="true">&times;</span>
-        </button>
-        Removed from Watchlist.
-</div> -->
 
 <div *ngIf="!alerts_empty_yn">
         <p *ngFor="let alert of alerts">
@@ -36,8 +10,5 @@
         </p>
 </div>
 
-<!-- <p *ngFor="let alert of alerts">
-        <ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
-</p> -->
 
 

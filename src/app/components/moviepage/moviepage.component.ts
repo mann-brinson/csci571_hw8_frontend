@@ -4,7 +4,6 @@ import { ActivatedRoute } from "@angular/router";
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { MovieTvItem } from '../homepage/movieTvItem';
 import { faFacebookSquare, faTwitter } from '@fortawesome/free-brands-svg-icons';
-// import { MovieDetail } from '../movie-detail/movieDetail';
 
 @Component({
   selector: 'app-moviepage',
@@ -20,6 +19,7 @@ export class MoviepageComponent {
   public credits: any = []
   public reviews: any = []
   public entity_type: string = ""
+  public entity_type_pretty: string = ""
 
   public youtube_page: string = ""
   public fb_share_page: string = ""
@@ -41,7 +41,6 @@ export class MoviepageComponent {
     private localStorageService: LocalStorageService
     ) { }
 
-  // ngOnInit() {
   ngOnInit() {
     var movie_id = this.route.snapshot.paramMap.get("tmdb_id");
 
@@ -51,6 +50,10 @@ export class MoviepageComponent {
 
       // Get entity_type
       this.entity_type = window.location.pathname.split("/")[2]
+      // Map into entity_type_pretty
+      if (this.entity_type == "movie") {this.entity_type_pretty = "Movies"}
+      else if (this.entity_type == "tv") {this.entity_type_pretty = "TV Shows"}
+
 
       this.moviepageService.getMoviepage(routeParams.tmdb_id!, this.entity_type)
       .subscribe((data) => {
@@ -111,7 +114,6 @@ export class MoviepageComponent {
           break
         }
       }
-      // console.log({"lru_cache after": result})
 
       //// MOVIE IN LRU
       if (result.length > 0) {
@@ -121,7 +123,6 @@ export class MoviepageComponent {
         var new_val = lru_cache
         new_val.splice(idx, 1)
         new_val.splice(0, 0, result[0])
-        // console.log({"lru_cache_new": new_val})
         this.localStorageService.set("lru_cache", new_val)
       } 
 
@@ -154,8 +155,6 @@ export class MoviepageComponent {
                   }]
       this.localStorageService.set("lru_cache", lru_cache_new)
     }
-
-    // console.log({"storage after": this.localStorageService.localStorage})
   }
 
 

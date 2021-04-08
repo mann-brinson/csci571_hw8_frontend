@@ -8,7 +8,6 @@ import { MovieDetail } from './movieDetail';
 })
 export class MovieDetailComponent {
 
-  // @Input() movie_detail: object = {}
   @Input() entity_type: string = ""
   @Input() movie_detail: MovieDetail = {
     name: "",
@@ -29,17 +28,10 @@ export class MovieDetailComponent {
   constructor() { }
 
   ngOnChanges() {
-    // console.log({"details": this.movie_detail.name})
-    // console.log({"len_dets": this.movie_detail.length})
     var movie_det = JSON.stringify(this.movie_detail)
     var movie_det_obj = JSON.parse(movie_det)
 
     if (this.movie_detail.name != undefined) {
-      console.log("ready to go")
-      console.log({"entity_type": this.entity_type})
-      console.log({"details": movie_det_obj})
-      console.log({"release_date": movie_det_obj.release_date})
-      // this.release_year = this.movie_detail.release_year
 
       //Convert duration mins to hours
       if (movie_det_obj.runtime != 0) {
@@ -80,11 +72,7 @@ export class MovieDetailComponent {
       if (movie_det_obj.spoken_languages.length != 0) {
         this.langs_str = movie_det_obj.spoken_languages.join(', ')
       }
-
-
-
     }
 
   }
-
 }

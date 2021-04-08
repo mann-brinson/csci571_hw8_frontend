@@ -1,7 +1,7 @@
-import { Component, ElementRef, Input, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieTvItem } from 'src/app/components/homepage/movieTvItem';
-import { ResizeService } from '../homepage/resize.service';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 // An enum that define all screen sizes the application support
 export enum SCREEN_SIZE {
@@ -18,7 +18,6 @@ export enum SCREEN_SIZE {
   styleUrls: ['./multi-item-carousel.component.css']
 })
 export class MultiItemCarouselComponent {
-  // @Input() movies_popular:MovieTvItem[] = [];
   @Input() movies_list_raw:MovieTvItem[] = []
   @Input() primary_page_yn: boolean = true
 
@@ -27,24 +26,32 @@ export class MultiItemCarouselComponent {
   public card_class = "card-moviepage"
   public card_img_class = "card-img-overlay-moviepage"
 
+  public small_screen_yn: boolean = false
+
   constructor(
     private router: Router,
-    private element: ElementRef) { }
+    private element: ElementRef,
+    private breakpointObserver: BreakpointObserver) { }
 
   //Must wait until the homepage projects its data into this view
   ngOnChanges() {
 
+    // Check if screen is smartphone
+    // ASSUME: if screen is <500px that the device is smartphone
+    this.breakpointObserver
+    .observe(['(min-width: 500px)'])
+    .subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        // console.log('Viewport is 500px or over!')
+        this.small_screen_yn = false
+
+      } else {
+        // console.log('Viewport is smaller than 500px!')
+        this.small_screen_yn = true
+      }
+    });
+
     if (this.movies_list_raw.length != 0) {
-
-      var card_test = document.querySelector('card')
-
-      // Assign the class based on the page that is calling the carousel
-      // if (this.primary_page_yn) {
-        
-      // } else if (!(this.primary_page_yn)) {
-
-      // }
-
       // Get the client current width
       this.screenWidth = window.innerWidth
       
@@ -68,20 +75,15 @@ export class MultiItemCarouselComponent {
         R.push(this.movies_list_raw.slice(i, i + chunkSize));
       }
       this.slides = R;
-
-      //Remove the slide indicators on small screens
-      // let myTag = this.element.nativeElement.getelementsbyClassName
     }
   }
 
   gotoMovieTvPage(event: Event) {
-    // console.log(event.target)
     let entityType_movieId: string = (event.target as Element).id
     var entity_type = entityType_movieId.split('-')[0]
     var movie_id = entityType_movieId.split('-')[1]
 
-    console.log({"going to ": [entity_type, movie_id]})
-    // console.log(`/watch/${entity_type}/${movie_id}`)
+    // console.log({"going to ": [entity_type, movie_id]})
     this.router.navigate([`/watch/${entity_type}/${movie_id}`])
   }
 }

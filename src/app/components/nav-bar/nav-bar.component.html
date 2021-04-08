@@ -1,40 +1,29 @@
-<!-- <h1>{{title}}</h1>
-<nav>
-    <a routerLink="/">Homepage</a><br>
-    <a routerLink="/mylist">My List</a>
-    <app-typeahead></app-typeahead>
-</nav> -->
-
-<!-- TESTING -->
-<!-- <h2>Nav Testing</h2> -->
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" routerLink="/" style="font-size: 26px; color: white;">USC Films</a>
-    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" 
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-        aria-expanded="false" aria-label="Toggle navigation"
-        (click)="toggleCollapsed()" style="color: white;">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" 
-        [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
-      <ul class="navbar-nav mr-auto">
+  <a class="navbar-brand" routerLink="/" style="font-size: 26px; color: white;">USC Films</a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" 
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+      aria-expanded="false" aria-label="Toggle navigation"
+      (click)="toggleCollapsed()" style="color: white;">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/" style="text-align: right; color: white;">Home <span class="sr-only">(current)</span></a>
-        </li>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" 
+      [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/mylist" style="text-align: right; color: white;">My List</a>
-        </li>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/" style="text-align: right; color: white;">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/mylist" style="text-align: right; color: white;">My List</a>
+      </li>
+    </ul>
 
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" style="right: 0;">
+        <app-typeahead></app-typeahead>
+      </li>
+    </ul>
 
-        <li class="nav-item">
-            <app-typeahead></app-typeahead>
-        </li>
-
-      </ul>
-    </div>
-  </nav>
-
-<!-- EXAMPLE -->
+  </div>
+</nav>

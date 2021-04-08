@@ -1,42 +1,4 @@
-/* HOMEPAGE STYLING */
-/* :host ::ng-deep .card {
-    margin: 10px;
-    width: 200px;
-    padding: 0px;
-} */
-
-:host ::ng-deep .primary-card {
-    margin: 10px;
-    width: 200px;
-    padding: 0px;
-}
-
-:host ::ng-deep .secondary-card {
-    margin: 42px;
-    width: 125px;
-    padding: 0px;
-}
-
-:host ::ng-deep .overlay-primary {
-    max-width: 200px;
-    opacity: 0;
-    padding: 0px;
-}
-
-:host ::ng-deep .overlay-secondary {
-    max-width: 125px;
-    opacity: 0;
-    padding: 0px;
-}
-
-.card:hover .card-img-overlay {
-    opacity: 1;
-}
-
-.card:hover img {
-    transform: scale(1.05);
-}
-
+/* GLOBAL STYLING */
 :host ::ng-deep .carousel-control-next {
     width: 5%;
 }
@@ -45,6 +7,56 @@
     width: 5%;
 }
 
-:host ::ng-deep .carousel-indicators { display: none; }
+:host ::ng-deep .carousel-inner { 
+    margin-bottom: 50px;
+}
+
+:host ::ng-deep .carousel-indicators { 
+    bottom:-50px;
+}
+
+/* HOMEPAGE STYLING */
+:host ::ng-deep .primary-card {
+    margin: 10px;
+    width: 200px;
+    padding: 0px;
+}
+
+:host ::ng-deep .overlay-primary {
+    max-width: 200px;
+    padding: 0px;
+}
 
 /* MOVIEPAGE STYLING */
+:host ::ng-deep .secondary-card {
+    margin: 42px;
+    width: 125px;
+    padding: 0px;
+}
+
+:host ::ng-deep .overlay-secondary {
+    width: 200px;
+    padding: 0px;
+}
+
+/* NON-MOBILE STYLING */
+.card:hover .card-img-overlay {
+    background-color: black;
+    transform: scale(1.05);
+    opacity: 0.7;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+    opacity: 0.7;
+}
+
+/* MOBILE STYLING */
+.non-phone-screen {
+    opacity: 0;
+}
+
+.phone-screen {
+    opacity: 1;
+}
+

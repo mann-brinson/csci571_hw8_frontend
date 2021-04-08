@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CastItemFullService } from './castItem.service';
-import { CastItemFull } from 'src/app/components/cast-list/castItem';
 import { faFacebookSquare, faTwitter, faImdb, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 //// COMP.CONTENT
@@ -65,7 +64,6 @@ export class CastModalComponent {
         modalRef.componentInstance.cast_item_modal = JSON.stringify(data)
         console.log({"data in modal": modalRef.componentInstance.cast_item_modal})
         
-        // console.log({"name test": JSON.parse(castItem).person.name}) //Works
         //Assign individual attributes
         modalRef.componentInstance.name = castItem_person_json.name
         modalRef.componentInstance.profile_path = castItem_person_json.profile_path
@@ -91,10 +89,7 @@ export class CastModalComponent {
 
         //Biography
         modalRef.componentInstance.biography = castItem_person_json.biography
-
       })
 
-    
   }
-
 }

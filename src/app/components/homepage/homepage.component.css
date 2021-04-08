@@ -1,3 +1,4 @@
+/* GLOBAL STYLING */
 :host ::ng-deep img {
     /* width: 750px; */
     resize: both;
@@ -10,14 +11,6 @@ ngb-carousel .picsum-img-wrapper {
   padding-top: 55%; /* Keep ratio for 900x500 images */
 }
 
-.card:hover img {
-  transform: scale(1.05);
-}
-
-.picsum-img-wrapper .carousel-caption {
-  opacity: 0;
-}
-
 .picsum-img-wrapper:hover .carousel-caption {
   opacity: 1;
 }
@@ -28,5 +21,19 @@ ngb-carousel .picsum-img-wrapper>img {
   left: 0;
   bottom: 0;
   right: 0;
-  /* width: 750px; */
+}
+
+/* NON-MOBILE STYLING */
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* MOBILE STYLING */
+.non-phone-screen {
+  opacity: 0;
+}
+
+.phone-screen {
+  opacity: 1;
+  font-size: 12px !important;
 }
